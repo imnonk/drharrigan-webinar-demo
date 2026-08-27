@@ -246,73 +246,127 @@
 
     /* ── BIO ── */
     .bio-section {
-      padding: 80px 24px;
-      background: var(--white);
+      padding: 0;
+      background: var(--navy);
+      overflow: hidden;
+      position: relative;
     }
 
     .bio-inner {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 60px;
-      align-items: start;
+      grid-template-columns: 1fr 380px;
+      align-items: stretch;
+      min-height: 600px;
+    }
+
+    .bio-content {
+      padding: 72px 56px 72px 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bio-content span.section-label {
+      text-align: left;
+      color: var(--teal-light);
+    }
+
+    .bio-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .bio-credentials {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: var(--amber-light);
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: 0.02em;
+    }
+
+    .bio-content p {
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .bio-stats {
+      display: flex;
+      gap: 32px;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+
+    .bio-stat {
+      text-align: center;
+    }
+
+    .bio-stat-num {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--amber-light);
+      font-family: 'Arial', sans-serif;
+      line-height: 1;
+    }
+
+    .bio-stat-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .bio-highlight {
+      background: rgba(255,255,255,0.07);
+      border-left: 4px solid var(--amber);
+      padding: 20px 24px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 28px;
+    }
+
+    .bio-highlight p {
+      font-style: italic;
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      margin: 0;
+      line-height: 1.7;
     }
 
     .bio-photo {
-      border-radius: 16px;
+      position: relative;
       overflow: hidden;
-      background: var(--light);
-      aspect-ratio: 3/4;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
     }
 
     .bio-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
+      display: block;
     }
 
-    .bio-content span.section-label { text-align: left; }
+    @media (max-width: 680px) {
+      .bio-inner {
+        grid-template-columns: 1fr;
+      }
 
-    .bio-content h2 {
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      color: var(--navy);
-      margin-bottom: 6px;
-      line-height: 1.2;
-    }
+      .bio-photo {
+        height: 320px;
+        order: -1;
+      }
 
-    .bio-credentials {
-      font-family: 'Arial', sans-serif;
-      font-size: 0.9rem;
-      color: var(--teal);
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
+      .bio-content {
+        padding: 40px 24px;
+      }
 
-    .bio-content p {
-      font-size: 1rem;
-      color: var(--text);
-      margin-bottom: 16px;
-      line-height: 1.75;
-    }
-
-    .bio-highlight {
-      background: var(--off-white);
-      border-left: 4px solid var(--amber);
-      padding: 20px 24px;
-      border-radius: 0 10px 10px 0;
-      margin-top: 24px;
-    }
-
-    .bio-highlight p {
-      font-style: italic;
-      color: var(--navy);
-      font-size: 1.05rem;
-      margin: 0;
+      .bio-stats { gap: 20px; }
     }
 
     /* ── 3 ROOT CAUSES ── */
@@ -687,9 +741,6 @@
   <!-- BIO -->
   <section class="bio-section">
     <div class="bio-inner">
-      <div class="bio-photo">
-        <img src="https://assets.cdn.filesafe.space/YAbsq0dLZVAf1hbjqq8i/media/8d6f597e-784e-4f2e-a03a-8fc61b6ba884.webp" alt="Dr. Tim Harrigan" style="width:100%; height:100%; object-fit:cover; object-position:top;" />
-      </div>
 
       <div class="bio-content">
         <span class="section-label">Meet Your Host</span>
@@ -700,12 +751,30 @@
 
         <p>Today, he has helped thousands of patients reclaim their vitality by addressing three overlooked root causes that conventional medicine consistently misses: Deficiencies, Toxicities, and Imbalances.</p>
 
-        <p>His Signature Blueprint Protocol is used successfully by moms, dads, entrepreneurs, and high-achievers alike. It is not about managing symptoms. It is about healing your body at the cellular level using precision diagnostics, non-invasive strategies, and regenerative wellness practices that actually work.</p>
+        <div class="bio-stats">
+          <div class="bio-stat">
+            <div class="bio-stat-num">20+</div>
+            <div class="bio-stat-label">Years in Practice</div>
+          </div>
+          <div class="bio-stat">
+            <div class="bio-stat-num">1000s</div>
+            <div class="bio-stat-label">Patients Helped</div>
+          </div>
+          <div class="bio-stat">
+            <div class="bio-stat-num">3</div>
+            <div class="bio-stat-label">Root Causes Identified</div>
+          </div>
+        </div>
 
         <div class="bio-highlight">
           <p>"My own wife was told she would never conceive naturally. Using the same root-cause approach I teach in this workshop, she did. That is what is possible when you stop chasing symptoms and start finding the real cause."</p>
         </div>
       </div>
+
+      <div class="bio-photo">
+        <img src="https://assets.cdn.filesafe.space/YAbsq0dLZVAf1hbjqq8i/media/8d6f597e-784e-4f2e-a03a-8fc61b6ba884.webp" alt="Dr. Tim Harrigan" />
+      </div>
+
     </div>
   </section>
 
