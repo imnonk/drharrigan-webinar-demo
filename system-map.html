@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Synergy Wellness — Digital Health System Map</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #003B5C;
+      --gold:  #C9A84C;
+      --teal:  #00505A;
+      --dark:  #1A1F2E;
+      --bg:    #F8F9FA;
+      --text:  #2C2C2C;
+      --white: #ffffff;
+      --gray:  #6B7280;
+      --light: #EEF2F5;
+      --red:   #DC2626;
+      --green: #059669;
+      --orange: #D97706;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 0 0 60px;
+    }
+
+    /* ── HEADER ── */
+    .page-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    .page-header .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.4rem, 4vw, 2rem);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .page-header p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      text-align: center;
+      padding: 32px 24px 8px;
+    }
+    .section-label h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .section-label p {
+      font-size: 0.88rem;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── DIAGNOSIS BOX ── */
+    .diagnosis {
+      max-width: 900px;
+      margin: 0 auto 0;
+      padding: 0 20px;
+    }
+    .diagnosis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .dx-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--red);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .dx-card.warn { border-left-color: var(--orange); }
+    .dx-card.ok   { border-left-color: var(--green); }
+    .dx-card .dx-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .dx-card.ok .dx-label   { color: var(--green); }
+    .dx-card.warn .dx-label { color: var(--orange); }
+    .dx-card .dx-label.red  { color: var(--red); }
+    .dx-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .dx-card p  { font-size: 0.85rem; color: var(--gray); }
+    .dx-card .dx-stat {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--red);
+      margin: 6px 0 2px;
+    }
+    .dx-card.ok .dx-stat   { color: var(--green); }
+    .dx-card.warn .dx-stat { color: var(--orange); }
+
+    /* ── FLOW MAP ── */
+    .flow-wrap {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Patient journey flow */
+    .journey {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .stage {
+      flex: 1;
+      min-width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .stage-box {
+      width: 100%;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px 12px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stage-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin: 0 auto 10px;
+    }
+    .stage-icon.navy  { background: var(--navy); color: var(--white); }
+    .stage-icon.gold  { background: var(--gold); color: var(--dark); }
+    .stage-icon.teal  { background: var(--teal); color: var(--white); }
+    .stage-icon.green { background: var(--green); color: var(--white); }
+    .stage-icon.red   { background: var(--red); color: var(--white); }
+
+    .stage-box h4 { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .stage-box p  { font-size: 0.78rem; color: var(--gray); }
+
+    .stage-status {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .status-broken { background: #FEE2E2; color: var(--red); }
+    .status-ok     { background: #D1FAE5; color: var(--green); }
+    .status-fix    { background: #FEF3C7; color: var(--orange); }
+    .status-new    { background: #DBEAFE; color: #1D4ED8; }
+
+    /* Arrow between stages */
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+      padding-top: 30px;
+      color: var(--gray);
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .arrow.broken { color: var(--red); }
+
+    /* ── PLATFORM MAP ── */
+    .platform-map {
+      max-width: 940px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .platform-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      border-top: 4px solid var(--gray);
+    }
+    .platform-card.active { border-top-color: var(--teal); }
+    .platform-card.broken { border-top-color: var(--red); }
+    .platform-card.target { border-top-color: var(--gold); }
+
+    .platform-card .pc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .platform-card .pc-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .pc-icon.teal  { background: var(--teal); color: var(--white); }
+    .pc-icon.navy  { background: var(--navy); color: var(--white); }
+    .pc-icon.gold  { background: var(--gold); color: var(--dark); }
+    .pc-icon.red   { background: var(--red); color: var(--white); }
+    .pc-icon.green { background: var(--green); color: var(--white); }
+
+    .platform-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); }
+    .platform-card .pc-url { font-size: 0.78rem; color: var(--gray); }
+
+    .platform-card ul { list-style: none; margin-top: 8px; }
+    .platform-card ul li {
+      font-size: 0.82rem;
+      padding: 4px 0;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .platform-card ul li::before { content: "•"; color: var(--gray); flex-shrink: 0; }
+    .platform-card ul li.broken::before { content: "✗"; color: var(--red); }
+    .platform-card ul li.ok::before    { content: "✓"; color: var(--green); }
+    .platform-card ul li.fix::before   { content: "!"; color: var(--orange); font-weight: 700; }
+
+    /* ── TREATMENT PLAN ── */
+    .treatment {
+      max-width: 940px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+
+    .timeline {
+      margin-top: 16px;
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--red), var(--orange), var(--teal), var(--green));
+      border-radius: 3px;
+    }
+
+    .t-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .t-dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--white);
+      z-index: 1;
+      box-shadow: 0 0 0 4px var(--bg);
+    }
+    .t-dot.red    { background: var(--red); }
+    .t-dot.orange { background: var(--orange); }
+    .t-dot.teal   { background: var(--teal); }
+    .t-dot.green  { background: var(--green); }
+    .t-dot.navy   { background: var(--navy); }
+
+    .t-content {
+      flex: 1;
+      background: var(--white);
+      border-radius: 10px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .t-content .t-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .t-content h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .t-content ul { list-style: none; }
+    .t-content ul li {
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 3px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .t-content ul li::before { content: "→"; color: var(--gold); flex-shrink: 0; }
+    .t-content .t-owner {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--gray);
+      font-style: italic;
+    }
+
+    /* ── OUTCOME PROJECTION ── */
+    .outcomes {
+      max-width: 940px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+    .outcomes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .outcome-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .outcome-card .o-before {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--red);
+    }
+    .outcome-card .o-arrow { font-size: 1.2rem; color: var(--gray); margin: 4px 0; }
+    .outcome-card .o-after {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+    .outcome-card p { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
+
+    /* ── WHAT WE NEED FROM YOU ── */
+    .ask {
+      max-width: 940px;
+      margin: 24px auto 0;
+      padding: 0 20px;
+    }
+    .ask-box {
+      background: var(--navy);
+      border-radius: 14px;
+      padding: 28px 28px 24px;
+      color: var(--white);
+    }
+    .ask-box h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .ask-box .ask-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+    }
+    .ask-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .ask-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--gold);
+    }
+    .ask-item .ask-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .ask-item h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
+    .ask-item p  { font-size: 0.8rem; color: rgba(255,255,255,0.65); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      max-width: 900px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      max-width: 940px;
+      margin: 24px auto 0;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .page-footer p { font-size: 0.8rem; color: var(--gray); }
+    .page-footer strong { color: var(--navy); }
+
+    @media (max-width: 640px) {
+      .journey { flex-direction: column; }
+      .arrow { transform: rotate(90deg); padding: 0; margin: -4px 0; align-self: center; }
+      .timeline::before { left: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="label">Synergy Wellness — Digital Ecosystem Review</div>
+  <h1>Your Patient Acquisition System: Where It Stands</h1>
+  <p>A clinical-style diagnostic of your digital health. Prepared by Richard Lobres, BizEx — August 2026.</p>
+</div>
+
+
+<!-- SECTION 1: DIAGNOSIS -->
+<div class="section-label">
+  <h2>Step 1: Diagnosis</h2>
+  <p>Current performance metrics vs. what a healthy system looks like</p>
+</div>
+
+<div class="diagnosis">
+  <div class="diagnosis-grid">
+
+    <div class="dx-card">
+      <div class="dx-label red">Critical</div>
+      <h3>Webinar Sign-Up Rate</h3>
+      <div class="dx-stat">0.2%</div>
+      <p>Of 7,337 contacts, roughly 10 people registered. Industry healthy range is 2-5%.</p>
+    </div>
+
+    <div class="dx-card">
+      <div class="dx-label red">Critical</div>
+      <h3>Email Open Rate</h3>
+      <div class="dx-stat">11%</div>
+      <p>89% of your list never saw the webinar invitation. Healthcare benchmark is 21-25%.</p>
+    </div>
+
+    <div class="dx-card">
+      <div class="dx-label red">Critical</div>
+      <h3>GHL Revenue</h3>
+      <div class="dx-stat">$0</div>
+      <p>Stripe is connected. The pipeline exists. Zero transactions have ever processed through GHL.</p>
+    </div>
+
+    <div class="dx-card warn">
+      <div class="dx-label">Significant</div>
+      <h3>Instagram Reach</h3>
+      <div class="dx-stat">Offline</div>
+      <p>4 of 6 Instagram connections expired. All posts go to Facebook only. IG audience: zero.</p>
+    </div>
+
+    <div class="dx-card ok">
+      <div class="dx-label">Healthy</div>
+      <h3>Email Engagement</h3>
+      <div class="dx-stat">57%</div>
+      <p>Of people who DO open, 57% engage. Your list is warm. The problem is getting them to open.</p>
+    </div>
+
+    <div class="dx-card ok">
+      <div class="dx-label">Healthy</div>
+      <h3>Google Rating</h3>
+      <div class="dx-stat">5.0</div>
+      <p>40 reviews, 5.0 stars. Strong social proof that is not yet displayed on any of your websites.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 2: PATIENT JOURNEY FLOW -->
+<div class="section-label">
+  <h2>Step 2: Where the Patient Journey Breaks</h2>
+  <p>Follow the path a new patient takes today. Red = breakdown point.</p>
+</div>
+
+<div class="flow-wrap">
+  <div class="journey">
+
+    <div class="stage">
+      <div class="stage-box">
+        <div class="stage-icon navy">👤</div>
+        <h4>Prospect Finds You</h4>
+        <p>Google search, social post, or referral</p>
+        <span class="stage-status status-ok">Working</span>
+      </div>
+    </div>
+
+    <div class="arrow">→</div>
+
+    <div class="stage">
+      <div class="stage-box">
+        <div class="stage-icon red">🌐</div>
+        <h4>Lands on Website</h4>
+        <p>3 separate sites. No clear next step. No booking button above fold.</p>
+        <span class="stage-status status-broken">Broken</span>
+      </div>
+    </div>
+
+    <div class="arrow broken">→</div>
+
+    <div class="stage">
+      <div class="stage-box">
+        <div class="stage-icon red">📧</div>
+        <h4>Gets Email Campaign</h4>
+        <p>Cold list. No warm-up. 89% never open it.</p>
+        <span class="stage-status status-broken">Broken</span>
+      </div>
+    </div>
+
+    <div class="arrow broken">→</div>
+
+    <div class="stage">
+      <div class="stage-box">
+        <div class="stage-icon red">🎥</div>
+        <h4>Webinar Registration</h4>
+        <p>Landing page has no social proof, no countdown, audio mutes by default.</p>
+        <span class="stage-status status-broken">Broken</span>
+      </div>
+    </div>
+
+    <div class="arrow broken">→</div>
+
+    <div class="stage">
+      <div class="stage-box">
+        <div class="stage-icon red">📅</div>
+        <h4>Consultation Booked</h4>
+        <p>Calendar exists but is not connected to website or email sequence.</p>
+        <span class="stage-status status-broken">Broken</span>
+      </div>
+    </div>
+
+    <div class="arrow broken">→</div>
+
+    <div class="stage">
+      <div class="stage-box">
+        <div class="stage-icon green">💰</div>
+        <h4>Program Enrolled</h4>
+        <p>Signature Blueprint or Metabolic Reset</p>
+        <span class="stage-status status-ok">Goal</span>
+      </div>
+    </div>
+
+  </div>
+
+  <p style="font-size:0.8rem;color:var(--gray);text-align:center;margin-top:12px;">The offer is strong. The path to it has 4 broken steps. Fixing each one compounds the result.</p>
+</div>
+
+
+<!-- SECTION 3: PLATFORM MAP -->
+<div class="section-label">
+  <h2>Step 3: Your Current Digital Ecosystem</h2>
+  <p>Three platforms that do not talk to each other</p>
+</div>
+
+<div class="platform-map">
+  <div class="platform-grid">
+
+    <div class="platform-card active">
+      <div class="pc-header">
+        <div class="pc-icon teal">🏥</div>
+        <div>
+          <h3>NaturalHealthTucson.com</h3>
+          <div class="pc-url">Wix — Chiropractic + Functional Medicine</div>
+        </div>
+      </div>
+      <ul>
+        <li class="ok">20+ years credentials visible</li>
+        <li class="ok">Active blog, 88 pages indexed</li>
+        <li class="broken">Only 1 CTA on homepage ("Contact Us")</li>
+        <li class="broken">Contact page has no form, no map</li>
+        <li class="broken">No booking system anywhere</li>
+        <li class="broken">Functional Medicine page titled "Functional Nutrition" — wrong keyword</li>
+        <li class="fix">Address typo: "111115" should be "11115" in Oro Valley footer</li>
+      </ul>
+    </div>
+
+    <div class="platform-card broken">
+      <div class="pc-header">
+        <div class="pc-icon red">⚡</div>
+        <div>
+          <h3>TucsonLaserTherapy.com</h3>
+          <div class="pc-url">Wix — Erchonia Laser Specialty</div>
+        </div>
+      </div>
+      <ul>
+        <li class="ok">FDA-cleared differentiator is strong</li>
+        <li class="ok">Free e-book lead magnet exists</li>
+        <li class="broken">Deep content pages are empty (just PDF links, no text)</li>
+        <li class="broken">No booking system connected</li>
+        <li class="broken">Brand name conflict: site says "Tucson Laser Therapy" but brand is "Synergy Wellness"</li>
+        <li class="broken">No blog — no SEO content for laser therapy searches</li>
+        <li class="fix">Horse emoji in Google title tag</li>
+      </ul>
+    </div>
+
+    <div class="platform-card broken">
+      <div class="pc-header">
+        <div class="pc-icon navy">💊</div>
+        <div>
+          <h3>SynergyWellnessFormulas.com</h3>
+          <div class="pc-url">Shopify — Supplement Store</div>
+        </div>
+      </div>
+      <ul>
+        <li class="ok">29 products in catalog</li>
+        <li class="ok">Stripe connected</li>
+        <li class="broken">Contact page shows fake Sydney, Australia address</li>
+        <li class="broken">Someone else's business page is live and indexed by Google</li>
+        <li class="broken">No About Dr. Tim page — credentials invisible</li>
+        <li class="broken">Horse emoji in every product title in Google</li>
+        <li class="fix">Testimonials page exists but is completely empty</li>
+      </ul>
+    </div>
+
+    <div class="platform-card target">
+      <div class="pc-header">
+        <div class="pc-icon gold">⚙️</div>
+        <div>
+          <h3>GoHighLevel (GHL)</h3>
+          <div class="pc-url">Your CRM — Should connect everything</div>
+        </div>
+      </div>
+      <ul>
+        <li class="ok">7,337 contacts stored</li>
+        <li class="ok">57% email engagement rate</li>
+        <li class="ok">Calendars set up (5 total)</li>
+        <li class="ok">Stripe connected and ready</li>
+        <li class="broken">Pipeline has zero opportunities — no tracking</li>
+        <li class="broken">Zero transactions ever processed</li>
+        <li class="broken">Instagram disconnected (4 accounts expired)</li>
+        <li class="fix">Review requests: 0 sent out of 40 existing reviews</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 4: TREATMENT PLAN -->
+<div class="section-label">
+  <h2>Step 4: Treatment Protocol</h2>
+  <p>Ordered by priority. Each phase builds on the previous.</p>
+</div>
+
+<div class="treatment">
+  <div class="timeline">
+
+    <div class="t-row">
+      <div class="t-dot red">W1</div>
+      <div class="t-content">
+        <div class="t-label">Week 1 — Stop the Bleeding</div>
+        <h3>Emergency Fixes (No Cost, Low Time)</h3>
+        <ul>
+          <li>Fix Oro Valley address typo on NaturalHealth site ("111115" to "11115")</li>
+          <li>Delete the razor blade company's page from Shopify store</li>
+          <li>Fix fake Sydney address on Shopify contact page</li>
+          <li>Reconnect Instagram (@drtimharrigan) in GHL Social Planner</li>
+          <li>Add audio instructions to webinar confirmation email</li>
+          <li>Set reminder: Facebook token expires Sept 24 — reconnect before that</li>
+        </ul>
+        <div class="t-owner">Owner: BizEx (Richard + Imelda) — Dr. Tim approval not required</div>
+      </div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-dot orange">W2</div>
+      <div class="t-content">
+        <div class="t-label">Weeks 2 to 3 — Warm the List Before September 17</div>
+        <h3>Pre-Webinar Email Warmup (4 Emails)</h3>
+        <ul>
+          <li>Email 1: Value content — "The real reason most patients never feel better" (no pitch)</li>
+          <li>Email 2: Patient transformation story (Jane D., Tish, Sarah M. — real, confirmed)</li>
+          <li>Email 3: "Something special is coming" — soft teaser with symptom hook</li>
+          <li>Email 4: Webinar announcement with full details and registration link</li>
+          <li>Rewrite subject lines using pain-point hooks, not event language</li>
+        </ul>
+        <div class="t-owner">Owner: BizEx writes, Dr. Tim approves sequence before it goes live</div>
+      </div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-dot teal">M1</div>
+      <div class="t-content">
+        <div class="t-label">Month 1 — Fix the Webinar Funnel</div>
+        <h3>Rebuild Registration Page + Add SMS Reminders</h3>
+        <ul>
+          <li>Add Dr. Tim's face and personal video to the registration page (proven 80% conversion lift)</li>
+          <li>Add countdown timer, social proof (5.0 stars, patient quotes), and single clear CTA</li>
+          <li>Switch Vimeo embed to GHL native or YouTube unlisted — fixes audio mute permanently</li>
+          <li>Add SMS reminder 48 hours and 1 hour before webinar</li>
+          <li>Connect webinar registration to GHL pipeline as "Lead" opportunity</li>
+        </ul>
+        <div class="t-owner">Owner: BizEx builds, Dr. Tim provides short personal video (2-3 min max)</div>
+      </div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-dot teal">M2</div>
+      <div class="t-content">
+        <div class="t-label">Month 2 — VSL + WhatsApp</div>
+        <h3>Evergreen Traffic Engine</h3>
+        <ul>
+          <li>Signature Blueprint VSL: recorded by Dr. Tim, edited by BizEx, placed on funnel page</li>
+          <li>VSL replaces the cold email as the primary conversion tool — people watch, understand, register</li>
+          <li>WhatsApp channel activated via GHL — webinar reminders, replay links, booking nudges</li>
+          <li>Extract 30+ pieces of social content from the September 17 webinar recording</li>
+        </ul>
+        <div class="t-owner">Owner: Dr. Tim records VSL (1 hour of his time). BizEx handles everything else.</div>
+      </div>
+    </div>
+
+    <div class="t-row">
+      <div class="t-dot green">M3</div>
+      <div class="t-content">
+        <div class="t-label">Month 3 — One Dashboard</div>
+        <h3>GHL Consolidation: All Three Sites Feed One CRM</h3>
+        <ul>
+          <li>All three sites cross-linked and pointing leads into the same GHL pipeline</li>
+          <li>Review request automation running after every appointment (target: 100 reviews in 90 days)</li>
+          <li>Stripe connected to Consultation and Signature Program — revenue visible in GHL</li>
+          <li>Consider moving NaturalHealth + Laser sites from Wix to GHL AI Studio (no more separate Wix bills)</li>
+        </ul>
+        <div class="t-owner">Owner: BizEx proposes migration plan. Dr. Tim approves when ready.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 5: EXPECTED OUTCOMES -->
+<div class="section-label">
+  <h2>Step 5: Expected Outcomes</h2>
+  <p>Conservative projections based on industry benchmarks for healthcare practices</p>
+</div>
+
+<div class="outcomes">
+  <div class="outcomes-grid">
+
+    <div class="outcome-card">
+      <div class="o-before">10</div>
+      <div class="o-arrow">↓ → ↑</div>
+      <div class="o-after">100+</div>
+      <p>Webinar sign-ups per campaign (after warmup + funnel fix)</p>
+    </div>
+
+    <div class="outcome-card">
+      <div class="o-before">11%</div>
+      <div class="o-arrow">↓ → ↑</div>
+      <div class="o-after">22%+</div>
+      <p>Email open rate (after subject line rewrite + list warmup)</p>
+    </div>
+
+    <div class="outcome-card">
+      <div class="o-before">$0</div>
+      <div class="o-arrow">↓ → ↑</div>
+      <div class="o-after">Tracked</div>
+      <p>Revenue visible in GHL (after Stripe connects to funnels)</p>
+    </div>
+
+    <div class="outcome-card">
+      <div class="o-before">40</div>
+      <div class="o-arrow">↓ → ↑</div>
+      <div class="o-after">100+</div>
+      <p>Google reviews (after automated post-appointment requests)</p>
+    </div>
+
+    <div class="outcome-card">
+      <div class="o-before">4 logins</div>
+      <div class="o-arrow">↓ → ↑</div>
+      <div class="o-after">1 login</div>
+      <p>Platforms to manage (Wix x2, Shopify, GHL → GHL only)</p>
+    </div>
+
+    <div class="outcome-card">
+      <div class="o-before">0</div>
+      <div class="o-arrow">↓ → ↑</div>
+      <div class="o-after">Pipeline</div>
+      <p>Opportunities tracked (every lead visible from first touch to enrollment)</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- SECTION 6: WHAT WE NEED FROM YOU -->
+<div class="ask" style="margin-top:32px;">
+  <div class="ask-box">
+    <h3>What We Need From You, Dr. Tim</h3>
+    <div class="ask-sub">Everything else is handled by BizEx. We need 4 things from you — total time: about 2 hours over 60 days.</div>
+    <div class="ask-items">
+      <div class="ask-item">
+        <div class="ask-num">Request 1</div>
+        <h4>30-Min Call This Week</h4>
+        <p>Confirm Sept 17 webinar details and approve the email warmup sequence before it goes live.</p>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">Request 2</div>
+        <h4>Approve New Emails</h4>
+        <p>4 emails for the warmup sequence. We write them. You read and approve. Takes 15 minutes.</p>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">Request 3</div>
+        <h4>Record a 2-Minute Video</h4>
+        <p>For the webinar registration page. Phone camera is fine. "Hi, I'm Dr. Tim — here's what you'll learn..." That's it.</p>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">Request 4</div>
+        <h4>Say Yes to One Login</h4>
+        <p>When you're ready: let us move everything into GHL. One dashboard. No more Wix. No more scattered logins.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="page-footer" style="margin-top:32px;">
+  <p>Prepared by <strong>Richard Lobres</strong> — BizEx | rlobresvp@gmail.com</p>
+  <p>Confidential — For Dr. Tim Harrigan | August 2026</p>
+</div>
+
+</body>
+</html>
