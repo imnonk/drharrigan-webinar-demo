@@ -6,21 +6,20 @@
   <title>Free Workshop — Dr. Tim Harrigan | Signature Blueprint Protocol</title>
   <meta name="description" content="Join Dr. Tim Harrigan's exclusive FREE workshop on September 17. Discover why mainstream medicine misses the mark and learn the proven 3-root-cause protocol to restore your energy, clarity, and health." />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #1A1F2E;
+      --navy:   #003B5C;
+      --gold:   #C9A84C;
       --teal:   #00505A;
-      --teal-light: #00707D;
-      --amber:  #F5A623;
-      --amber-light: #F5A623;
-      --white:  #FFFFFF;
-      --off-white: #F8FAFC;
-      --gray:   #64748B;
-      --light:  #E2E8F0;
-      --text:   #1E293B;
+      --dark:   #1A1F2E;
+      --bg:     #F8F9FA;
+      --text:   #2C2C2C;
+      --white:  #ffffff;
+      --gray:   #6B7280;
+      --light:  #EEF2F5;
     }
 
     body {
@@ -36,7 +35,7 @@
 
     /* ── ANNOUNCEMENT BAR ── */
     .announcement-bar {
-      background: var(--amber);
+      background: var(--gold);
       color: var(--white);
       text-align: center;
       padding: 10px 20px;
@@ -74,7 +73,7 @@
       display: inline-block;
       background: rgba(14,116,144,0.25);
       border: 1px solid rgba(14,116,144,0.6);
-      color: var(--teal-light);
+      color: var(--teal);
       font-family: 'Inter', sans-serif;
       font-size: 0.78rem;
       font-weight: 700;
@@ -93,7 +92,7 @@
       color: var(--white);
     }
 
-    .hero h1 span { color: var(--amber-light); }
+    .hero h1 span { color: var(--gold); }
 
     .hero-sub {
       font-family: 'Inter', sans-serif;
@@ -129,7 +128,7 @@
     }
 
     .date-badge-item strong {
-      color: var(--amber-light);
+      color: var(--gold);
       font-weight: 700;
     }
 
@@ -138,7 +137,7 @@
     /* ── CTA BUTTON ── */
     .btn-primary {
       display: inline-block;
-      background: var(--amber);
+      background: var(--gold);
       color: #1A1F2E;
       font-family: 'Inter', sans-serif;
       font-size: 1.05rem;
@@ -153,7 +152,7 @@
     }
 
     .btn-primary:hover {
-      background: var(--amber-light);
+      background: var(--gold);
       transform: translateY(-2px);
     }
 
@@ -166,7 +165,7 @@
 
     /* ── PAIN POINTS ── */
     .pain-section {
-      background: var(--off-white);
+      background: var(--bg);
       padding: 72px 24px;
       text-align: center;
     }
@@ -236,7 +235,7 @@
       margin: 0 auto 20px;
     }
 
-    .whatif-section h2 span { color: var(--amber-light); }
+    .whatif-section h2 span { color: var(--gold); }
 
     .whatif-section p {
       font-family: 'Inter', sans-serif;
@@ -273,7 +272,7 @@
 
     .bio-content span.section-label {
       text-align: left;
-      color: var(--teal-light);
+      color: var(--teal);
     }
 
     .bio-content h2 {
@@ -286,7 +285,7 @@
     .bio-credentials {
       font-family: 'Inter', sans-serif;
       font-size: 0.88rem;
-      color: var(--amber-light);
+      color: var(--gold);
       font-weight: 600;
       margin-bottom: 28px;
       letter-spacing: 0.02em;
@@ -311,7 +310,7 @@
     .bio-stat-num {
       font-size: 2rem;
       font-weight: 700;
-      color: var(--amber-light);
+      color: var(--gold);
       font-family: 'Inter', sans-serif;
       line-height: 1;
     }
@@ -327,7 +326,7 @@
 
     .bio-highlight {
       background: rgba(255,255,255,0.07);
-      border-left: 4px solid var(--amber);
+      border-left: 4px solid var(--gold);
       padding: 20px 24px;
       border-radius: 0 10px 10px 0;
       margin-top: 28px;
@@ -350,7 +349,7 @@
       height: 100%;
       overflow: hidden;
       background: var(--navy);
-      border-bottom: 4px solid var(--amber);
+      border-bottom: 4px solid var(--gold);
     }
 
     /* Gradient overlay: left edge fades from navy → transparent so white photo bg blends */
@@ -383,7 +382,7 @@
         width: 100%;
         height: 340px;
         border-bottom: none;
-        border-top: 4px solid var(--amber);
+        border-top: 4px solid var(--gold);
       }
       .bio-photo::before {
         background: linear-gradient(to bottom, var(--navy) 0%, transparent 40%);
@@ -397,7 +396,7 @@
 
     /* ── 3 ROOT CAUSES ── */
     .causes-section {
-      background: var(--off-white);
+      background: var(--bg);
       padding: 80px 24px;
       text-align: center;
     }
@@ -549,7 +548,7 @@
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 8px;
-      color: var(--amber-light);
+      color: var(--gold);
       font-family: 'Inter', sans-serif;
     }
 
@@ -562,7 +561,7 @@
 
     /* ── FORM / REGISTRATION ── */
     .register-section {
-      background: var(--off-white);
+      background: var(--bg);
       padding: 80px 24px;
     }
 
@@ -610,7 +609,7 @@
     .event-detail-row .icon {
       width: 36px;
       height: 36px;
-      background: var(--off-white);
+      background: var(--bg);
       border-radius: 8px;
       display: flex;
       align-items: center;
