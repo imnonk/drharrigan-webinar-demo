@@ -105,22 +105,24 @@
 
     /* ── DATE BADGE ── */
     .date-badge {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
-      padding: 14px 28px;
+      padding: 12px 20px;
       margin-bottom: 40px;
       flex-wrap: wrap;
       justify-content: center;
+      max-width: 100%;
     }
 
     .date-badge-item {
       font-family: 'Arial', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       color: rgba(255,255,255,0.85);
+      white-space: nowrap;
     }
 
     .date-badge-item strong {
