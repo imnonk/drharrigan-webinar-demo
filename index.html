@@ -107,20 +107,22 @@
     .date-badge {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px 20px;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
-      padding: 12px 20px;
+      padding: 14px 24px;
       margin-bottom: 40px;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: 100%;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .date-badge-item {
       font-family: 'Arial', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: rgba(255,255,255,0.85);
       white-space: nowrap;
     }
@@ -130,11 +132,7 @@
       font-weight: 700;
     }
 
-    .date-divider {
-      width: 1px;
-      height: 20px;
-      background: rgba(255,255,255,0.25);
-    }
+    .date-divider { display: none; }
 
     /* ── CTA BUTTON ── */
     .btn-primary {
@@ -704,11 +702,8 @@
 
       <div class="date-badge">
         <div class="date-badge-item">&#128197; <strong>Thursday, September 17</strong></div>
-        <div class="date-divider"></div>
         <div class="date-badge-item">&#128336; <strong>6:30 PM AZ/Pacific</strong></div>
-        <div class="date-divider"></div>
         <div class="date-badge-item">&#128187; <strong>Watch Online</strong></div>
-        <div class="date-divider"></div>
         <div class="date-badge-item">&#127381; <strong>100% FREE</strong></div>
       </div>
 
