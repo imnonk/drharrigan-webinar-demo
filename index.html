@@ -247,25 +247,27 @@
 
     /* ── BIO ── */
     .bio-section {
-      padding: 0;
       background: var(--navy);
       overflow: hidden;
+      position: relative;
+      min-height: 600px;
+      padding: 0;
     }
 
     .bio-inner {
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      align-items: stretch;
+      position: relative;
       min-height: 600px;
+      display: block;
     }
 
     .bio-content {
-      background: var(--navy);
-      padding: 72px 56px 72px 40px;
+      background: transparent;
+      padding: 72px max(24px, 5vw) 72px max(24px, 4vw);
       position: relative;
       z-index: 2;
+      max-width: 620px;
     }
 
     .bio-content span.section-label {
@@ -338,36 +340,57 @@
       line-height: 1.7;
     }
 
-    /* RIGHT COLUMN — solid teal backdrop makes white-bg photo look intentional */
+    /* RIGHT SIDE — photo absolutely positioned, bleeds full height */
     .bio-photo {
-      background: #0E7490;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 44%;
+      height: 100%;
       overflow: hidden;
+      background: var(--navy);
       border-bottom: 4px solid var(--amber);
-      position: relative;
+    }
+
+    /* Gradient overlay: left edge fades from navy → transparent so white photo bg blends */
+    .bio-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--navy) 0%, rgba(13,27,42,0.6) 30%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .bio-photo img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: bottom center;
+      object-fit: cover;
+      object-position: top center;
       display: block;
     }
 
-    @media (max-width: 720px) {
-      .bio-inner {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 860px) {
+      .bio-photo { width: 38%; }
+      .bio-content { max-width: 62%; }
+    }
+
+    @media (max-width: 620px) {
+      .bio-section { min-height: unset; }
       .bio-photo {
+        position: relative;
+        width: 100%;
         height: 340px;
-        order: -1;
         border-bottom: none;
         border-top: 4px solid var(--amber);
       }
-      .bio-content { padding: 44px 24px; }
+      .bio-photo::before {
+        background: linear-gradient(to bottom, var(--navy) 0%, transparent 40%);
+      }
+      .bio-content {
+        max-width: 100%;
+        padding: 44px max(24px, 4vw);
+      }
       .bio-stats { gap: 20px; }
     }
 
@@ -680,7 +703,7 @@
       <div class="date-badge">
         <div class="date-badge-item">&#128197; <strong>Thursday, September 17</strong></div>
         <div class="date-divider"></div>
-        <div class="date-badge-item">&#128336; <strong>Time TBA</strong></div>
+        <div class="date-badge-item">&#128336; <strong>6:30 PM Eastern</strong></div>
         <div class="date-divider"></div>
         <div class="date-badge-item">&#128187; <strong>Watch Online</strong></div>
         <div class="date-divider"></div>
