@@ -6,28 +6,27 @@
   <title>Free Workshop — Dr. Tim Harrigan | Signature Blueprint Protocol</title>
   <meta name="description" content="Join Dr. Tim Harrigan's exclusive FREE workshop on September 17. Discover why mainstream medicine misses the mark and learn the proven 3-root-cause protocol to restore your energy, clarity, and health." />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy:   #003B5C;
-      --gold:   #C9A84C;
-      --teal:   #00505A;
-      --dark:   #1A1F2E;
-      --bg:     #F8F9FA;
-      --text:   #2C2C2C;
-      --white:  #ffffff;
-      --gray:   #6B7280;
-      --light:  #EEF2F5;
+      --navy:   #0D1B2A;
+      --teal:   #0E7490;
+      --teal-light: #22A8C3;
+      --amber:  #D97706;
+      --amber-light: #F59E0B;
+      --white:  #FFFFFF;
+      --off-white: #F8FAFC;
+      --gray:   #64748B;
+      --light:  #E2E8F0;
+      --text:   #1E293B;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Georgia', serif;
       color: var(--text);
       background: var(--white);
       line-height: 1.7;
-      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -35,7 +34,7 @@
 
     /* ── ANNOUNCEMENT BAR ── */
     .announcement-bar {
-      background: var(--gold);
+      background: var(--amber);
       color: var(--white);
       text-align: center;
       padding: 10px 20px;
@@ -73,8 +72,8 @@
       display: inline-block;
       background: rgba(14,116,144,0.25);
       border: 1px solid rgba(14,116,144,0.6);
-      color: var(--teal);
-      font-family: 'Inter', sans-serif;
+      color: var(--teal-light);
+      font-family: 'Arial', sans-serif;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -92,10 +91,10 @@
       color: var(--white);
     }
 
-    .hero h1 span { color: var(--gold); }
+    .hero h1 span { color: var(--amber-light); }
 
     .hero-sub {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 1.1rem;
       color: rgba(255,255,255,0.75);
       max-width: 640px;
@@ -105,41 +104,41 @@
 
     /* ── DATE BADGE ── */
     .date-badge {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 8px 20px;
+      gap: 12px;
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
-      padding: 14px 24px;
+      padding: 14px 28px;
       margin-bottom: 40px;
       flex-wrap: wrap;
       justify-content: center;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .date-badge-item {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.95rem;
       color: rgba(255,255,255,0.85);
-      white-space: nowrap;
     }
 
     .date-badge-item strong {
-      color: var(--gold);
+      color: var(--amber-light);
       font-weight: 700;
     }
 
-    .date-divider { display: none; }
+    .date-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.25);
+    }
 
     /* ── CTA BUTTON ── */
     .btn-primary {
       display: inline-block;
-      background: var(--gold);
-      color: #1A1F2E;
-      font-family: 'Inter', sans-serif;
+      background: var(--amber);
+      color: var(--white);
+      font-family: 'Arial', sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
       padding: 18px 44px;
@@ -152,12 +151,12 @@
     }
 
     .btn-primary:hover {
-      background: var(--gold);
+      background: var(--amber-light);
       transform: translateY(-2px);
     }
 
     .btn-guarantee {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.8rem;
       color: rgba(255,255,255,0.5);
       margin-top: 12px;
@@ -165,7 +164,7 @@
 
     /* ── PAIN POINTS ── */
     .pain-section {
-      background: var(--bg);
+      background: var(--off-white);
       padding: 72px 24px;
       text-align: center;
     }
@@ -173,7 +172,7 @@
     .section-inner { max-width: 900px; margin: 0 auto; }
 
     .section-label {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -191,7 +190,7 @@
     }
 
     .pain-section .lead {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 1rem;
       color: var(--gray);
       max-width: 580px;
@@ -214,7 +213,7 @@
     }
 
     .pain-card p {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.95rem;
       color: var(--text);
       line-height: 1.55;
@@ -235,10 +234,10 @@
       margin: 0 auto 20px;
     }
 
-    .whatif-section h2 span { color: var(--gold); }
+    .whatif-section h2 span { color: var(--amber-light); }
 
     .whatif-section p {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       color: rgba(255,255,255,0.7);
       max-width: 600px;
       margin: 0 auto;
@@ -247,156 +246,78 @@
 
     /* ── BIO ── */
     .bio-section {
-      background: var(--navy);
-      overflow: hidden;
-      position: relative;
-      min-height: 600px;
-      padding: 0;
+      padding: 80px 24px;
+      background: var(--white);
     }
 
     .bio-inner {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
-      position: relative;
-      min-height: 600px;
-      display: block;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 60px;
+      align-items: start;
     }
 
-    .bio-content {
-      background: transparent;
-      padding: 72px max(24px, 5vw) 72px max(24px, 4vw);
-      position: relative;
-      z-index: 2;
-      max-width: 620px;
-    }
-
-    .bio-content span.section-label {
-      text-align: left;
-      color: var(--teal);
-    }
-
-    .bio-content h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      color: var(--white);
-      margin-bottom: 6px;
-      line-height: 1.1;
-    }
-
-    .bio-credentials {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      color: var(--gold);
-      font-weight: 600;
-      margin-bottom: 28px;
-      letter-spacing: 0.02em;
-    }
-
-    .bio-content p {
-      font-size: 0.98rem;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 16px;
-      line-height: 1.8;
-    }
-
-    .bio-stats {
-      display: flex;
-      gap: 32px;
-      margin: 32px 0;
-      flex-wrap: wrap;
-    }
-
-    .bio-stat { text-align: center; }
-
-    .bio-stat-num {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--gold);
-      font-family: 'Inter', sans-serif;
-      line-height: 1;
-    }
-
-    .bio-stat-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-top: 4px;
-    }
-
-    .bio-highlight {
-      background: rgba(255,255,255,0.07);
-      border-left: 4px solid var(--gold);
-      padding: 20px 24px;
-      border-radius: 0 10px 10px 0;
-      margin-top: 28px;
-    }
-
-    .bio-highlight p {
-      font-style: italic;
-      color: rgba(255,255,255,0.85);
-      font-size: 1rem;
-      margin: 0;
-      line-height: 1.7;
-    }
-
-    /* RIGHT SIDE — photo absolutely positioned, bleeds full height */
     .bio-photo {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 44%;
-      height: 100%;
+      border-radius: 16px;
       overflow: hidden;
-      background: var(--navy);
-      border-bottom: 4px solid var(--gold);
-    }
-
-    /* Gradient overlay: left edge fades from navy → transparent so white photo bg blends */
-    .bio-photo::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--navy) 0%, rgba(26,31,46,0.6) 30%, transparent 60%);
-      z-index: 1;
-      pointer-events: none;
+      background: var(--light);
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
     }
 
     .bio-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center;
-      display: block;
     }
 
-    @media (max-width: 860px) {
-      .bio-photo { width: 38%; }
-      .bio-content { max-width: 62%; }
+    .bio-content span.section-label { text-align: left; }
+
+    .bio-content h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--navy);
+      margin-bottom: 6px;
+      line-height: 1.2;
     }
 
-    @media (max-width: 620px) {
-      .bio-section { min-height: unset; }
-      .bio-photo {
-        position: relative;
-        width: 100%;
-        height: 340px;
-        border-bottom: none;
-        border-top: 4px solid var(--gold);
-      }
-      .bio-photo::before {
-        background: linear-gradient(to bottom, var(--navy) 0%, transparent 40%);
-      }
-      .bio-content {
-        max-width: 100%;
-        padding: 44px max(24px, 4vw);
-      }
-      .bio-stats { gap: 20px; }
+    .bio-credentials {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .bio-content p {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.75;
+    }
+
+    .bio-highlight {
+      background: var(--off-white);
+      border-left: 4px solid var(--amber);
+      padding: 20px 24px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 24px;
+    }
+
+    .bio-highlight p {
+      font-style: italic;
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin: 0;
     }
 
     /* ── 3 ROOT CAUSES ── */
     .causes-section {
-      background: var(--bg);
+      background: var(--off-white);
       padding: 80px 24px;
       text-align: center;
     }
@@ -408,7 +329,7 @@
     }
 
     .causes-section .lead {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       color: var(--gray);
       max-width: 580px;
       margin: 0 auto 52px;
@@ -443,7 +364,7 @@
       align-items: center;
       justify-content: center;
       margin: 0 auto 20px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
     }
 
     .cause-card h3 {
@@ -453,7 +374,7 @@
     }
 
     .cause-card p {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.9rem;
       color: var(--gray);
       line-height: 1.6;
@@ -473,7 +394,7 @@
     }
 
     .learn-section .lead {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       color: var(--gray);
       max-width: 560px;
       margin: 0 auto 48px;
@@ -493,7 +414,7 @@
       display: flex;
       align-items: flex-start;
       gap: 14px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 1rem;
       color: var(--text);
       line-height: 1.55;
@@ -548,12 +469,12 @@
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 8px;
-      color: var(--gold);
-      font-family: 'Inter', sans-serif;
+      color: var(--amber-light);
+      font-family: 'Arial', sans-serif;
     }
 
     .who-card p {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.85rem;
       color: rgba(255,255,255,0.65);
       line-height: 1.55;
@@ -561,7 +482,7 @@
 
     /* ── FORM / REGISTRATION ── */
     .register-section {
-      background: var(--bg);
+      background: var(--off-white);
       padding: 80px 24px;
     }
 
@@ -578,7 +499,7 @@
     }
 
     .register-inner .lead {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       color: var(--gray);
       margin-bottom: 36px;
       font-size: 1rem;
@@ -598,7 +519,7 @@
       gap: 14px;
       padding: 12px 0;
       border-bottom: 1px solid var(--light);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.95rem;
       color: var(--text);
       text-align: left;
@@ -609,7 +530,7 @@
     .event-detail-row .icon {
       width: 36px;
       height: 36px;
-      background: var(--bg);
+      background: var(--off-white);
       border-radius: 8px;
       display: flex;
       align-items: center;
@@ -644,7 +565,7 @@
       border: 1px solid var(--light);
       border-radius: 8px;
       font-size: 1rem;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       color: var(--text);
       background: var(--white);
       outline: none;
@@ -658,7 +579,7 @@
     .reg-form .btn-primary { width: 100%; font-size: 1.1rem; padding: 18px; }
 
     .privacy-note {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.78rem;
       color: var(--gray);
       margin-top: 12px;
@@ -670,7 +591,7 @@
       color: rgba(255,255,255,0.5);
       text-align: center;
       padding: 36px 24px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Arial', sans-serif;
       font-size: 0.82rem;
     }
 
@@ -678,26 +599,31 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 680px) {
+      .bio-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .bio-photo {
+        width: 180px;
+        margin: 0 auto;
+        aspect-ratio: 1/1;
+      }
+
       .date-divider { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Brand Header -->
-  <div style="background:#1A1F2E; padding:10px 24px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid rgba(255,255,255,0.08);">
-    <img src="https://static.wixstatic.com/media/a84e9c_5b9fcd41bad5410c92019be36ad32553~mv2.png/v1/fill/w_185,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Synergy%20Wellness%20Logo.png" alt="Synergy Wellness" style="height:40px; width:auto;" />
-  </div>
-
   <!-- Announcement Bar -->
   <div class="announcement-bar">
-    &#128197; FREE Workshop &mdash; Thursday, September 17, 2026 &mdash; Reserve Your Free Spot Now
+    &#128197; FREE Live Workshop &mdash; Wednesday, September 17, 2025 &mdash; Reserve Your Spot Now (Limited Seats)
   </div>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-eyebrow">Free Workshop &bull; September 17</div>
+      <div class="hero-eyebrow">Free Live Workshop &bull; September 17</div>
 
       <h1>Why Mainstream Medicine<br><span>Misses the Mark</span> for Parents,<br>Entrepreneurs &amp; Hormone Patients</h1>
 
@@ -706,14 +632,17 @@
       </p>
 
       <div class="date-badge">
-        <div class="date-badge-item">&#128197; <strong>Thursday, September 17</strong></div>
-        <div class="date-badge-item">&#128336; <strong>6:30 PM AZ/Pacific</strong></div>
-        <div class="date-badge-item">&#128187; <strong>Watch Online</strong></div>
+        <div class="date-badge-item">&#128197; <strong>Wednesday, September 17</strong></div>
+        <div class="date-divider"></div>
+        <div class="date-badge-item">&#128336; <strong>Time TBA</strong></div>
+        <div class="date-divider"></div>
+        <div class="date-badge-item">&#128187; <strong>Live Online via Zoom</strong></div>
+        <div class="date-divider"></div>
         <div class="date-badge-item">&#127381; <strong>100% FREE</strong></div>
       </div>
 
       <a href="#register" class="btn-primary">Reserve Your Free Spot Now &rarr;</a>
-      <p class="btn-guarantee">No cost. No obligation. 100% free.</p>
+      <p class="btn-guarantee">No cost. No obligation. Seats are limited.</p>
     </div>
   </section>
 
@@ -758,6 +687,9 @@
   <!-- BIO -->
   <section class="bio-section">
     <div class="bio-inner">
+      <div class="bio-photo">
+        &#128104;&#8205;&#9877;&#65039;
+      </div>
 
       <div class="bio-content">
         <span class="section-label">Meet Your Host</span>
@@ -768,52 +700,12 @@
 
         <p>Today, he has helped thousands of patients reclaim their vitality by addressing three overlooked root causes that conventional medicine consistently misses: Deficiencies, Toxicities, and Imbalances.</p>
 
-        <div class="bio-stats">
-          <div class="bio-stat">
-            <div class="bio-stat-num">20+</div>
-            <div class="bio-stat-label">Years in Practice</div>
-          </div>
-          <div class="bio-stat">
-            <div class="bio-stat-num">1000s</div>
-            <div class="bio-stat-label">Patients Helped</div>
-          </div>
-          <div class="bio-stat">
-            <div class="bio-stat-num">3</div>
-            <div class="bio-stat-label">Root Causes Identified</div>
-          </div>
-        </div>
+        <p>His Signature Blueprint Protocol is used successfully by moms, dads, entrepreneurs, and high-achievers alike. It is not about managing symptoms. It is about healing your body at the cellular level using precision diagnostics, non-invasive strategies, and regenerative wellness practices that actually work.</p>
 
         <div class="bio-highlight">
           <p>"My own wife was told she would never conceive naturally. Using the same root-cause approach I teach in this workshop, she did. That is what is possible when you stop chasing symptoms and start finding the real cause."</p>
         </div>
       </div>
-
-      <div class="bio-photo">
-        <img src="https://assets.cdn.filesafe.space/YAbsq0dLZVAf1hbjqq8i/media/8d6f597e-784e-4f2e-a03a-8fc61b6ba884.webp" alt="Dr. Tim Harrigan" />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- VIDEO SECTION -->
-  <section style="background:#f8fafc; padding:72px 24px; text-align:center;">
-    <div style="max-width:820px; margin:0 auto;">
-      <span style="font-family:Arial,sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#0E7490; margin-bottom:14px; display:block;">Hear From Dr. Tim</span>
-      <h2 style="font-size:clamp(1.5rem,3vw,2.2rem); color:#0D1B2A; margin-bottom:12px;">A Message From Dr. Tim Harrigan</h2>
-      <p style="font-family:Arial,sans-serif; color:#64748B; max-width:560px; margin:0 auto 36px; font-size:1rem;">Watch this short message from Dr. Tim Harrigan.</p>
-
-      <!-- VIDEO PLACEHOLDER — Replace with actual embed (Vimeo, YouTube, or Wistia) -->
-      <div style="position:relative; width:100%; max-width:720px; margin:0 auto; border-radius:16px; overflow:hidden; background:#0D1B2A; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 40px rgba(0,0,0,0.18);">
-        <div style="text-align:center; color:rgba(255,255,255,0.7); font-family:Arial,sans-serif;">
-          <div style="width:72px; height:72px; border-radius:50%; background:rgba(217,119,6,0.9); display:flex; align-items:center; justify-content:center; margin:0 auto 18px; cursor:pointer;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-          </div>
-          <div style="font-size:1rem; font-weight:600; color:white; margin-bottom:6px;">Dr. Tim Harrigan</div>
-          <div style="font-size:0.85rem; color:rgba(255,255,255,0.55);">Video placeholder — replace with Vimeo or YouTube embed</div>
-        </div>
-      </div>
-      <!-- END VIDEO PLACEHOLDER -->
-
     </div>
   </section>
 
@@ -910,30 +802,30 @@
   <!-- REGISTRATION FORM -->
   <section class="register-section" id="register">
     <div class="register-inner">
-      <span class="section-label">Register Now</span>
+      <span class="section-label">Save Your Seat</span>
       <h2>Reserve Your Free Spot for September 17</h2>
-      <p class="lead">Fill in your details below to register for instant access.</p>
+      <p class="lead">Seats are limited. Fill in your details below to save your spot for this live workshop.</p>
 
       <div class="event-details">
         <div class="event-detail-row">
           <div class="icon">&#128197;</div>
           <div>
             <span class="event-detail-label">Date</span>
-            <span class="event-detail-value">Thursday, September 17, 2026</span>
+            <span class="event-detail-value">Wednesday, September 17, 2025</span>
           </div>
         </div>
         <div class="event-detail-row">
           <div class="icon">&#128336;</div>
           <div>
             <span class="event-detail-label">Time</span>
-            <span class="event-detail-value">6:30 PM AZ/Pacific</span>
+            <span class="event-detail-value">TBA &mdash; Check your email after registering</span>
           </div>
         </div>
         <div class="event-detail-row">
           <div class="icon">&#128187;</div>
           <div>
             <span class="event-detail-label">Format</span>
-            <span class="event-detail-value">Watch Online</span>
+            <span class="event-detail-value">Live Online Workshop via Zoom</span>
           </div>
         </div>
         <div class="event-detail-row">
@@ -965,6 +857,10 @@
       <a href="https://www.tucsonlasertherapy.com">Laser Therapy</a> &bull;
       <a href="https://synergywellnessformulas.com">Supplement Store</a> &bull;
       <a href="https://www.naturalhealthtucson.com">Main Website</a>
+    </p>
+    <p style="margin-top:12px;">
+      <a href="disclaimer.html">Disclaimer</a> &bull;
+      <a href="terms.html">Terms of Service</a>
     </p>
     <p style="margin-top:12px; font-size:0.75rem; color:rgba(255,255,255,0.3);">This workshop is for educational purposes only and does not constitute medical advice. Results may vary.</p>
   </footer>
