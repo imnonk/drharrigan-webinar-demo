@@ -151,11 +151,19 @@
     }
     .platform-card-header {
       padding: 14px 18px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      align-items: start;
-      gap: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       border-bottom: 1px solid var(--light);
+      position: relative;
+    }
+    .platform-card-header .status-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+    }
+    .platform-icon {
+      margin-bottom: 10px;
     }
     .platform-icon {
       width: 42px;
@@ -183,8 +191,6 @@
       font-size: 0.72rem;
       font-weight: 700;
       white-space: nowrap;
-      align-self: start;
-      justify-self: end;
     }
     .badge-red { background: #FEE2E2; color: var(--red); }
     .badge-amber { background: #FEF3C7; color: var(--amber); }
