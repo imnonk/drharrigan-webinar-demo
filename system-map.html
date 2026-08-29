@@ -3,907 +3,767 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synergy Wellness — Digital Health System Map</title>
+  <title>Synergy Wellness — Digital Ecosystem Audit | BizEx</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy:  #003B5C;
-      --gold:  #C9A84C;
-      --teal:  #00505A;
-      --dark:  #1A1F2E;
-      --bg:    #F8F9FA;
-      --text:  #2C2C2C;
-      --white: #ffffff;
-      --gray:  #6B7280;
-      --light: #EEF2F5;
-      --red:   #DC2626;
-      --green: #059669;
-      --orange: #D97706;
+      --navy:   #003B5C;
+      --gold:   #C9A84C;
+      --dark:   #0D1B2A;
+      --bg:     #F4F6F9;
+      --white:  #FFFFFF;
+      --text:   #1A2736;
+      --gray:   #5A6878;
+      --light:  #E8EDF2;
+      --red:    #DC2626;
+      --green:  #059669;
+      --amber:  #D97706;
+      --blue:   #2563EB;
     }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-      padding: 0 0 60px;
+    /* ── REPORT HEADER ── */
+    .report-header {
+      background: var(--dark);
+      color: #fff;
+      padding: 0;
     }
-
-    /* ── HEADER ── */
-    .page-header {
+    .header-top {
       background: var(--navy);
-      color: var(--white);
-      padding: 32px 24px 28px;
-      text-align: center;
+      padding: 14px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
     }
-    .page-header .label {
-      font-size: 0.75rem;
+    .bizex-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .bizex-logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+    .bizex-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .bizex-sub {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .header-meta {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      text-align: right;
+    }
+    .header-body {
+      padding: 48px 40px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .report-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .report-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .report-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+    }
+    .report-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .pill.gold { background: rgba(201,168,76,0.15); border-color: rgba(201,168,76,0.4); color: var(--gold); }
+
+    /* ── SECTIONS ── */
+    .section { padding: 56px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 10px;
     }
-    .page-header h1 {
-      font-size: clamp(1.4rem, 4vw, 2rem);
+    .section-title {
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
       font-weight: 800;
+      color: var(--navy);
       margin-bottom: 8px;
     }
-    .page-header p {
+    .section-desc {
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    /* ── SECTION LABELS ── */
-    .section-label {
-      text-align: center;
-      padding: 32px 24px 8px;
-    }
-    .section-label h2 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-    .section-label p {
-      font-size: 0.88rem;
       color: var(--gray);
-      margin-top: 4px;
+      max-width: 680px;
+      margin-bottom: 36px;
     }
 
-    /* ── DIAGNOSIS BOX ── */
-    .diagnosis {
-      max-width: 900px;
-      margin: 0 auto 0;
-      padding: 0 20px;
-    }
-    .diagnosis-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .dx-card {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 18px 20px;
-      border-left: 4px solid var(--red);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    .dx-card.warn { border-left-color: var(--orange); }
-    .dx-card.ok   { border-left-color: var(--green); }
-    .dx-card .dx-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .dx-card.ok .dx-label   { color: var(--green); }
-    .dx-card.warn .dx-label { color: var(--orange); }
-    .dx-card .dx-label.red  { color: var(--red); }
-    .dx-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .dx-card p  { font-size: 0.85rem; color: var(--gray); }
-    .dx-card .dx-stat {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--red);
-      margin: 6px 0 2px;
-    }
-    .dx-card.ok .dx-stat   { color: var(--green); }
-    .dx-card.warn .dx-stat { color: var(--orange); }
-
-    /* ── FLOW MAP ── */
-    .flow-wrap {
-      max-width: 940px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Patient journey flow */
-    .journey {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      gap: 0;
-      margin-top: 20px;
-      position: relative;
-    }
-
-    .stage {
-      flex: 1;
-      min-width: 140px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-    }
-
-    .stage-box {
-      width: 100%;
-      background: var(--white);
-      border-radius: 10px;
-      padding: 16px 12px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-      position: relative;
-      z-index: 1;
-    }
-
-    .stage-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      margin: 0 auto 10px;
-    }
-    .stage-icon.navy  { background: var(--navy); color: var(--white); }
-    .stage-icon.gold  { background: var(--gold); color: var(--dark); }
-    .stage-icon.teal  { background: var(--teal); color: var(--white); }
-    .stage-icon.green { background: var(--green); color: var(--white); }
-    .stage-icon.red   { background: var(--red); color: var(--white); }
-
-    .stage-box h4 { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .stage-box p  { font-size: 0.78rem; color: var(--gray); }
-
-    .stage-status {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 3px 10px;
-      border-radius: 20px;
-      margin-top: 10px;
-      display: inline-block;
-    }
-    .status-broken { background: #FEE2E2; color: var(--red); }
-    .status-ok     { background: #D1FAE5; color: var(--green); }
-    .status-fix    { background: #FEF3C7; color: var(--orange); }
-    .status-new    { background: #DBEAFE; color: #1D4ED8; }
-
-    /* Arrow between stages */
-    .arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 4px;
-      padding-top: 30px;
-      color: var(--gray);
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-    .arrow.broken { color: var(--red); }
-
-    /* ── PLATFORM MAP ── */
-    .platform-map {
-      max-width: 940px;
-      margin: 20px auto 0;
-      padding: 0 20px;
-    }
-
+    /* ── PLATFORM CARDS ── */
     .platform-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
     }
-
     .platform-card {
       background: var(--white);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      border-top: 4px solid var(--gray);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
     }
-    .platform-card.active { border-top-color: var(--teal); }
-    .platform-card.broken { border-top-color: var(--red); }
-    .platform-card.target { border-top-color: var(--gold); }
-
-    .platform-card .pc-header {
+    .platform-card-header {
+      padding: 18px 22px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 14px;
+      border-bottom: 1px solid var(--light);
     }
-    .platform-card .pc-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .pc-icon.teal  { background: var(--teal); color: var(--white); }
-    .pc-icon.navy  { background: var(--navy); color: var(--white); }
-    .pc-icon.gold  { background: var(--gold); color: var(--dark); }
-    .pc-icon.red   { background: var(--red); color: var(--white); }
-    .pc-icon.green { background: var(--green); color: var(--white); }
-
-    .platform-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--dark); }
-    .platform-card .pc-url { font-size: 0.78rem; color: var(--gray); }
-
-    .platform-card ul { list-style: none; margin-top: 8px; }
-    .platform-card ul li {
-      font-size: 0.82rem;
-      padding: 4px 0;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 6px;
-    }
-    .platform-card ul li::before { content: "•"; color: var(--gray); flex-shrink: 0; }
-    .platform-card ul li.broken::before { content: "✗"; color: var(--red); }
-    .platform-card ul li.ok::before    { content: "✓"; color: var(--green); }
-    .platform-card ul li.fix::before   { content: "!"; color: var(--orange); font-weight: 700; }
-
-    /* ── TREATMENT PLAN ── */
-    .treatment {
-      max-width: 940px;
-      margin: 20px auto 0;
-      padding: 0 20px;
-    }
-
-    .timeline {
-      margin-top: 16px;
-      position: relative;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--red), var(--orange), var(--teal), var(--green));
-      border-radius: 3px;
-    }
-
-    .t-row {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .t-dot {
+    .platform-icon {
       width: 42px;
       height: 42px;
-      border-radius: 50%;
-      flex-shrink: 0;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: 0.85rem;
-      color: var(--white);
-      z-index: 1;
-      box-shadow: 0 0 0 4px var(--bg);
+      font-size: 1.3rem;
+      flex-shrink: 0;
     }
-    .t-dot.red    { background: var(--red); }
-    .t-dot.orange { background: var(--orange); }
-    .t-dot.teal   { background: var(--teal); }
-    .t-dot.green  { background: var(--green); }
-    .t-dot.navy   { background: var(--navy); }
-
-    .t-content {
-      flex: 1;
-      background: var(--white);
-      border-radius: 10px;
-      padding: 16px 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    .t-content .t-label {
-      font-size: 0.7rem;
+    .platform-info strong {
+      display: block;
+      font-size: 0.95rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      margin-bottom: 4px;
+      color: var(--navy);
     }
-    .t-content h3 { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-    .t-content ul { list-style: none; }
-    .t-content ul li {
-      font-size: 0.85rem;
-      color: var(--text);
-      padding: 3px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .t-content ul li::before { content: "→"; color: var(--gold); flex-shrink: 0; }
-    .t-content .t-owner {
-      margin-top: 10px;
+    .platform-info span {
       font-size: 0.78rem;
       color: var(--gray);
-      font-style: italic;
     }
-
-    /* ── OUTCOME PROJECTION ── */
-    .outcomes {
-      max-width: 940px;
-      margin: 20px auto 0;
-      padding: 0 20px;
-    }
-    .outcomes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-    .outcome-card {
-      background: var(--white);
-      border-radius: 10px;
-      padding: 18px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
-    .outcome-card .o-before {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--red);
-    }
-    .outcome-card .o-arrow { font-size: 1.2rem; color: var(--gray); margin: 4px 0; }
-    .outcome-card .o-after {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--green);
-    }
-    .outcome-card p { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
-
-    /* ── WHAT WE NEED FROM YOU ── */
-    .ask {
-      max-width: 940px;
-      margin: 24px auto 0;
-      padding: 0 20px;
-    }
-    .ask-box {
-      background: var(--navy);
-      border-radius: 14px;
-      padding: 28px 28px 24px;
-      color: var(--white);
-    }
-    .ask-box h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-    .ask-box .ask-sub {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 20px;
-    }
-    .ask-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-    }
-    .ask-item {
-      background: rgba(255,255,255,0.07);
-      border-radius: 10px;
-      padding: 14px 16px;
-      border-left: 3px solid var(--gold);
-    }
-    .ask-item .ask-num {
+    .status-badge {
+      margin-left: auto;
+      padding: 3px 10px;
+      border-radius: 100px;
       font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      text-transform: uppercase;
-      margin-bottom: 4px;
+      flex-shrink: 0;
     }
-    .ask-item h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 4px; }
-    .ask-item p  { font-size: 0.8rem; color: rgba(255,255,255,0.65); }
+    .badge-red { background: #FEE2E2; color: var(--red); }
+    .badge-amber { background: #FEF3C7; color: var(--amber); }
+    .badge-green { background: #D1FAE5; color: var(--green); }
+    .platform-card-body { padding: 18px 22px; }
+    .audit-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--light);
+      font-size: 0.85rem;
+    }
+    .audit-row:last-child { border-bottom: none; }
+    .audit-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .dot-red { background: var(--red); }
+    .dot-amber { background: var(--amber); }
+    .dot-green { background: var(--green); }
+    .audit-row-text { color: var(--text); line-height: 1.45; }
+    .audit-row-text strong { color: var(--navy); }
 
-    /* ── DIVIDER ── */
-    .divider {
-      max-width: 900px;
-      margin: 32px auto 0;
-      padding: 0 20px;
-      border-top: 1px solid #e5e7eb;
+    /* ── COMPARISON TABLE ── */
+    .compare-wrap { overflow-x: auto; }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
     }
+    .compare-table th {
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+    .compare-table th.ghl-col { background: var(--gold); color: var(--navy); }
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--light);
+      vertical-align: top;
+      background: var(--white);
+    }
+    .compare-table tr:nth-child(even) td { background: #F8FAFC; }
+    .compare-table td.ghl-col {
+      background: #FFF9EC;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .compare-table tr:nth-child(even) td.ghl-col { background: #FFF3D6; }
+    .tick { color: var(--green); font-weight: 700; }
+    .cross { color: var(--red); font-weight: 700; }
+    .partial { color: var(--amber); font-weight: 700; }
+    .feature-label { font-weight: 600; color: var(--navy); }
+    .feature-sub { font-size: 0.78rem; color: var(--gray); }
+
+    /* ── COST SAVINGS ── */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .cost-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--red);
+    }
+    .cost-card.ghl { border-top-color: var(--green); }
+    .cost-card .cost-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px; }
+    .cost-card .cost-platform { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .cost-card .cost-price { font-size: 1.6rem; font-weight: 800; color: var(--red); }
+    .cost-card.ghl .cost-price { color: var(--green); }
+    .cost-card .cost-note { font-size: 0.78rem; color: var(--gray); margin-top: 6px; }
+    .savings-total {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .savings-total strong { font-size: 1.1rem; }
+    .savings-total .amount { font-size: 2rem; font-weight: 800; color: var(--gold); }
+
+    /* ── WHAT GHL UNLOCKS ── */
+    .unlock-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .unlock-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 22px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--gold);
+    }
+    .unlock-card .unlock-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .unlock-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .unlock-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
+
+    /* ── RECOMMENDATION BAND ── */
+    .rec-band {
+      background: linear-gradient(135deg, var(--navy) 0%, #0A5080 100%);
+      color: #fff;
+      padding: 56px 40px;
+    }
+    .rec-band-inner { max-width: 1100px; margin: 0 auto; }
+    .rec-band h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 8px; }
+    .rec-band h2 span { color: var(--gold); }
+    .rec-band .lead { font-size: 0.97rem; color: rgba(255,255,255,0.7); margin-bottom: 36px; max-width: 620px; }
+    .rec-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .rec-step {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .rec-step .step-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .rec-step h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .rec-step p { font-size: 0.83rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
 
     /* ── FOOTER ── */
-    .page-footer {
-      max-width: 940px;
-      margin: 24px auto 0;
-      padding: 0 20px;
+    .report-footer {
+      background: var(--dark);
+      padding: 24px 40px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 12px;
     }
-    .page-footer p { font-size: 0.8rem; color: var(--gray); }
-    .page-footer strong { color: var(--navy); }
+    .report-footer p { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+    .report-footer a { color: var(--gold); text-decoration: none; font-size: 0.78rem; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      .journey { flex-direction: column; }
-      .arrow { transform: rotate(90deg); padding: 0; margin: -4px 0; align-self: center; }
-      .timeline::before { left: 18px; }
+      .section, .rec-band { padding: 40px 20px; }
+      .header-body { padding: 36px 20px 32px; }
+      .header-top, .report-footer { padding-left: 20px; padding-right: 20px; }
     }
   </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<div class="page-header">
-  <div class="label">Synergy Wellness — Digital Ecosystem Review</div>
-  <h1>Your Patient Acquisition System: Where It Stands</h1>
-  <p>A clinical-style diagnostic of your digital health. Prepared for Dr. Tim Harrigan — August 2026.</p>
-</div>
-
-
-<!-- SECTION 1: DIAGNOSIS -->
-<div class="section-label">
-  <h2>Step 1: Diagnosis</h2>
-  <p>Current performance metrics vs. what a healthy system looks like</p>
-</div>
-
-<div class="diagnosis">
-  <div class="diagnosis-grid">
-
-    <div class="dx-card">
-      <div class="dx-label red">Critical</div>
-      <h3>Webinar Sign-Up Rate</h3>
-      <div class="dx-stat">0.2%</div>
-      <p>Of 7,337 contacts, roughly 10 people registered. Industry healthy range is 2-5%.</p>
+<div class="report-header">
+  <div class="header-top">
+    <div class="bizex-brand">
+      <div class="bizex-logo-mark">B</div>
+      <div>
+        <div class="bizex-name">BizEx</div>
+        <div class="bizex-sub">The Business Expander</div>
+      </div>
     </div>
-
-    <div class="dx-card">
-      <div class="dx-label red">Critical</div>
-      <h3>Email Open Rate</h3>
-      <div class="dx-stat">11%</div>
-      <p>89% of your list never saw the webinar invitation. Healthcare benchmark is 21-25%.</p>
+    <div class="header-meta">
+      Prepared by Richard Lobres<br>
+      GHL Certified Specialist &bull; August 29, 2026
     </div>
-
-    <div class="dx-card">
-      <div class="dx-label red">Critical</div>
-      <h3>GHL Revenue</h3>
-      <div class="dx-stat">$0</div>
-      <p>Stripe is connected. The pipeline exists. Zero transactions have ever processed through GHL.</p>
+  </div>
+  <div class="header-body">
+    <p class="report-label">Confidential Business Audit</p>
+    <h1 class="report-title">Synergy Wellness<br>Digital Ecosystem Audit</h1>
+    <p class="report-sub">A full review of your current digital platforms, what each one is costing you in missed leads and revenue, and why one GHL account replaces all of it.</p>
+    <div class="report-pills">
+      <span class="pill">Dr. Tim Harrigan, D.C., B.Sc.</span>
+      <span class="pill">5 Platforms Audited</span>
+      <span class="pill gold">GHL Consolidation Recommended</span>
     </div>
-
-    <div class="dx-card warn">
-      <div class="dx-label">Significant</div>
-      <h3>Instagram Reach</h3>
-      <div class="dx-stat">Offline</div>
-      <p>4 of 6 Instagram connections expired. All posts go to Facebook only. IG audience: zero.</p>
-    </div>
-
-    <div class="dx-card warn">
-      <div class="dx-label">Significant</div>
-      <h3>Social Posting</h3>
-      <div class="dx-stat">FB Only</div>
-      <p>Daily posts are publishing consistently to Facebook at 4 AM. Strong habit. But Instagram is completely dark and no other platform is active.</p>
-    </div>
-
-    <div class="dx-card ok">
-      <div class="dx-label">Healthy</div>
-      <h3>Email Engagement</h3>
-      <div class="dx-stat">57%</div>
-      <p>Of people who DO open, 57% engage. Your list is warm. The problem is getting them to open.</p>
-    </div>
-
-    <div class="dx-card ok">
-      <div class="dx-label">Healthy</div>
-      <h3>Google Rating</h3>
-      <div class="dx-stat">5.0</div>
-      <p>40 reviews, 5.0 stars. Strong social proof that is not yet displayed on any of your websites.</p>
-    </div>
-
   </div>
 </div>
 
+<!-- PLATFORM AUDIT -->
+<div class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <p class="section-label">Platform by Platform</p>
+    <h2 class="section-title">Your Current Digital Stack — Audited</h2>
+    <p class="section-desc">You are currently running five separate platforms with zero CRM connection between them. Every visitor who doesn't book immediately is lost forever with no way to follow up.</p>
 
-<!-- SECTION 2: PATIENT JOURNEY FLOW -->
-<div class="section-label">
-  <h2>Step 2: Where the Patient Journey Breaks</h2>
-  <p>Follow the path a new patient takes today. Red = breakdown point.</p>
-</div>
+    <div class="platform-grid">
 
-<div class="flow-wrap">
-  <div class="journey">
-
-    <div class="stage">
-      <div class="stage-box">
-        <div class="stage-icon navy">👤</div>
-        <h4>Prospect Finds You</h4>
-        <p>Google search, social post, or referral</p>
-        <span class="stage-status status-ok">Working</span>
-      </div>
-    </div>
-
-    <div class="arrow">→</div>
-
-    <div class="stage">
-      <div class="stage-box">
-        <div class="stage-icon red">🌐</div>
-        <h4>Lands on Website</h4>
-        <p>3 separate sites. No clear next step. No booking button above fold.</p>
-        <span class="stage-status status-broken">Broken</span>
-      </div>
-    </div>
-
-    <div class="arrow broken">→</div>
-
-    <div class="stage">
-      <div class="stage-box">
-        <div class="stage-icon red">📧</div>
-        <h4>Gets Email Campaign</h4>
-        <p>Cold list. No warm-up. 89% never open it.</p>
-        <span class="stage-status status-broken">Broken</span>
-      </div>
-    </div>
-
-    <div class="arrow broken">→</div>
-
-    <div class="stage">
-      <div class="stage-box">
-        <div class="stage-icon red">🎥</div>
-        <h4>Webinar Registration</h4>
-        <p>Landing page has no social proof, no countdown, </p>
-        <span class="stage-status status-broken">Broken</span>
-      </div>
-    </div>
-
-    <div class="arrow broken">→</div>
-
-    <div class="stage">
-      <div class="stage-box">
-        <div class="stage-icon red">📅</div>
-        <h4>Consultation Booked</h4>
-        <p>Calendar exists but is not connected to website or email sequence.</p>
-        <span class="stage-status status-broken">Broken</span>
-      </div>
-    </div>
-
-    <div class="arrow broken">→</div>
-
-    <div class="stage">
-      <div class="stage-box">
-        <div class="stage-icon green">💰</div>
-        <h4>Program Enrolled</h4>
-        <p>Signature Blueprint or Metabolic Reset</p>
-        <span class="stage-status status-ok">Goal</span>
-      </div>
-    </div>
-
-  </div>
-
-  <p style="font-size:0.8rem;color:var(--gray);text-align:center;margin-top:12px;">The offer is strong. The path to it has 4 broken steps. Fixing each one compounds the result.</p>
-</div>
-
-
-<!-- SECTION 3: PLATFORM MAP -->
-<div class="section-label">
-  <h2>Step 3: Your Current Digital Ecosystem</h2>
-  <p>Three platforms that do not talk to each other</p>
-</div>
-
-<div class="platform-map">
-  <div class="platform-grid">
-
-    <div class="platform-card active">
-      <div class="pc-header">
-        <div class="pc-icon teal">🏥</div>
-        <div>
-          <h3>NaturalHealthTucson.com</h3>
-          <div class="pc-url">Wix — Chiropractic + Functional Medicine</div>
+      <!-- naturalhealthtucson.com -->
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <div class="platform-icon" style="background:#EEF4FA;">🌿</div>
+          <div class="platform-info">
+            <strong>naturalhealthtucson.com</strong>
+            <span>Wix / ChiroWebsitePro &bull; Main site</span>
+          </div>
+          <span class="status-badge badge-red">Critical Issues</span>
+        </div>
+        <div class="platform-card-body">
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No chat widget.</strong> Visitors who have questions leave with no way to engage them in real time.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No CRM.</strong> Every form submission goes into a Wix inbox, not a lead pipeline. No automated follow-up, no nurture sequence.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No Facebook Pixel or conversion tracking.</strong> Ad spend is flying blind.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No reputation management widget.</strong> Google reviews are not displayed to build trust.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>"Powered by ChiroWebsitePro"</strong> in the footer. Your brand carries a third-party watermark.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>Horse emoji in page title</strong> (ChiroWebsitePro artifact) visible in browser tabs and search results.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>Limited control.</strong> Cannot export contacts, cannot run automations, cannot A/B test pages.</div></div>
         </div>
       </div>
-      <ul>
-        <li class="ok">20+ years credentials visible</li>
-        <li class="ok">Active blog, 88 pages indexed</li>
-        <li class="broken">Only 1 CTA on homepage ("Contact Us")</li>
-        <li class="broken">Contact page has no form, no map</li>
-        <li class="broken">No booking system anywhere</li>
-        <li class="broken">Functional Medicine page titled "Functional Nutrition" — wrong keyword</li>
-        <li class="fix">Address typo: "111115" should be "11115" in Oro Valley footer</li>
-      </ul>
-    </div>
 
-    <div class="platform-card broken">
-      <div class="pc-header">
-        <div class="pc-icon red">⚡</div>
-        <div>
-          <h3>TucsonLaserTherapy.com</h3>
-          <div class="pc-url">Wix — Erchonia Laser Specialty</div>
+      <!-- tucsonlasertherapy.com -->
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <div class="platform-icon" style="background:#FEF3C7;">⚡</div>
+          <div class="platform-info">
+            <strong>tucsonlasertherapy.com</strong>
+            <span>Wix / ChiroWebsitePro &bull; Laser therapy</span>
+          </div>
+          <span class="status-badge badge-red">Critical Issues</span>
+        </div>
+        <div class="platform-card-body">
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No chat widget.</strong> Patients looking for laser therapy answers leave without converting.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No CRM, no lead capture pipeline.</strong> "Schedule an Appointment" links go nowhere trackable.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No Facebook Pixel, no Google Analytics.</strong> Zero visibility into traffic or conversions.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No reputation management.</strong> No review widget building credibility on the page.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>Completely siloed.</strong> A visitor on this site is invisible to your main site and to your GHL account.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>"Powered by ChiroWebsitePro"</strong> watermark in footer. Two Wix subscriptions for two watermarked sites.</div></div>
         </div>
       </div>
-      <ul>
-        <li class="ok">FDA-cleared differentiator is strong</li>
-        <li class="ok">Free e-book lead magnet exists</li>
-        <li class="broken">Deep content pages are empty (just PDF links, no text)</li>
-        <li class="broken">No booking system connected</li>
-        <li class="broken">Brand name conflict: site says "Tucson Laser Therapy" but brand is "Synergy Wellness"</li>
-        <li class="broken">No blog — no SEO content for laser therapy searches</li>
-        <li class="fix">Horse emoji in Google title tag</li>
-      </ul>
-    </div>
 
-    <div class="platform-card broken">
-      <div class="pc-header">
-        <div class="pc-icon navy">💊</div>
-        <div>
-          <h3>SynergyWellnessFormulas.com</h3>
-          <div class="pc-url">Shopify — Supplement Store</div>
+      <!-- synergywellnessformulas.com -->
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <div class="platform-icon" style="background:#D1FAE5;">🛒</div>
+          <div class="platform-info">
+            <strong>synergywellnessformulas.com</strong>
+            <span>Shopify &bull; Supplement store</span>
+          </div>
+          <span class="status-badge badge-amber">Moderate Issues</span>
+        </div>
+        <div class="platform-card-body">
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No CRM integration.</strong> Shopify customers who purchase supplements are never followed up with. No upsell, no nurture, no rebooking sequence.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No chat widget.</strong> Pre-purchase questions go unanswered, reducing conversion.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No Facebook Pixel.</strong> Cannot retarget store visitors with ads for your consultation or webinar.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>Google Analytics present</strong> but not connected to any lead pipeline or GHL contact.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>Supplement buyer never becomes a consult patient.</strong> The two revenue streams are invisible to each other.</div></div>
         </div>
       </div>
-      <ul>
-        <li class="ok">29 products in catalog</li>
-        <li class="ok">Stripe connected</li>
-        <li class="broken">Contact page shows fake Sydney, Australia address</li>
-        <li class="broken">Someone else's business page is live and indexed by Google</li>
-        <li class="broken">No About Dr. Tim page — credentials invisible</li>
-        <li class="broken">Horse emoji in every product title in Google</li>
-        <li class="fix">Testimonials page exists but is completely empty</li>
-      </ul>
-    </div>
 
-    <div class="platform-card target">
-      <div class="pc-header">
-        <div class="pc-icon gold">⚙️</div>
-        <div>
-          <h3>GoHighLevel (GHL)</h3>
-          <div class="pc-url">Your CRM — Should connect everything</div>
+      <!-- GHL / Social Tenacity -->
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <div class="platform-icon" style="background:#EEF4FA;">📱</div>
+          <div class="platform-info">
+            <strong>drtim.drharrigan.ai (GHL)</strong>
+            <span>Social Tenacity white-label &bull; Funnel + CRM</span>
+          </div>
+          <span class="status-badge badge-amber">Limited Control</span>
+        </div>
+        <div class="platform-card-body">
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>URL "optin-page-5094-6518-9619-6275" is not professional.</strong> Long numeric slug looks auto-generated, not trustworthy.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No contact import/export control.</strong> Social Tenacity owns your data. You cannot freely move your 7,337 contacts out.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>Staff feature disabled.</strong> Cannot add team members or an agency admin without going through Social Tenacity.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>Lorem Ipsum and fake testimonials live on your opt-in page</strong> right now, visible to real visitors.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>No chat widget on the opt-in page.</strong> A visitor with a question has no way to engage before leaving.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>No AI features enabled.</strong> Conversation AI, Workflow AI, Voice AI, and reputation management are available inside GHL but not activated.</div></div>
         </div>
       </div>
-      <ul>
-        <li class="ok">7,337 contacts stored</li>
-        <li class="ok">57% email engagement rate</li>
-        <li class="ok">Calendars set up (5 total)</li>
-        <li class="ok">Stripe connected and ready</li>
-        <li class="broken">Pipeline has zero opportunities — no tracking</li>
-        <li class="broken">Zero transactions ever processed</li>
-        <li class="broken">Instagram disconnected (4 accounts expired)</li>
-        <li class="fix">Review requests: 0 sent out of 40 existing reviews</li>
-      </ul>
-    </div>
 
+      <!-- Practice Better -->
+      <div class="platform-card">
+        <div class="platform-card-header">
+          <div class="platform-icon" style="background:#F0FDF4;">📋</div>
+          <div class="platform-info">
+            <strong>Practice Better</strong>
+            <span>Course + program delivery &bull; Metabolic Reset $1,604</span>
+          </div>
+          <span class="status-badge badge-amber">Siloed</span>
+        </div>
+        <div class="platform-card-body">
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No connection to your GHL CRM.</strong> A patient who enrolls in the Metabolic Reset Program ($1,604) is invisible to your main lead pipeline.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-red"></div><div class="audit-row-text"><strong>No automated follow-up after enrollment.</strong> No email sequence, no SMS check-in, no upsell to supplements or next consult.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>Branded under "Green Patch Inc"</strong> — the Practice Better parent company appears in the footer, not Synergy Wellness.</div></div>
+          <div class="audit-row"><div class="audit-dot dot-amber"></div><div class="audit-row-text"><strong>Separate subscription and login.</strong> Another platform to manage, another monthly fee.</div></div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </div>
 
+<!-- COMPARISON TABLE -->
+<div class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <p class="section-label">Side by Side</p>
+    <h2 class="section-title">Your Current Platforms vs. One GHL Account</h2>
+    <p class="section-desc">One GHL account at $97/month includes 3 sub-accounts, unlimited contacts, and every feature below. Your current stack pays for all of these separately — and still misses most of them.</p>
 
-<!-- SECTION 4: TREATMENT PLAN -->
-<div class="section-label">
-  <h2>Step 4: Treatment Protocol</h2>
-  <p>Ordered by priority. Each phase builds on the previous.</p>
-</div>
-
-<div class="treatment">
-  <div class="timeline">
-
-    <div class="t-row">
-      <div class="t-dot red">W1</div>
-      <div class="t-content">
-        <div class="t-label">Week 1 — Stop the Bleeding</div>
-        <h3>Emergency Fixes (No Cost, Low Time)</h3>
-        <ul>
-          <li>Fix Oro Valley address typo on NaturalHealth site ("111115" to "11115")</li>
-          <li>Delete the razor blade company's page from Shopify store</li>
-          <li>Fix fake Sydney address on Shopify contact page</li>
-          <li>Reconnect Instagram (@drtimharrigan) in GHL Social Planner</li>
-          <li>Set reminder: Facebook token expires Sept 24 — reconnect before that</li>
-        </ul>
-        <div class="t-owner">Action: Your team handles this. No time required from you.</div>
-      </div>
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:28%;">Feature</th>
+            <th>Wix Sites<br><small style="font-weight:400;opacity:.7;">(naturalhealthtucson + tucsonlasertherapy)</small></th>
+            <th>Shopify<br><small style="font-weight:400;opacity:.7;">synergywellnessformulas</small></th>
+            <th>Social Tenacity GHL<br><small style="font-weight:400;opacity:.7;">drtim.drharrigan.ai</small></th>
+            <th class="ghl-col">Your Own GHL<br><small style="font-weight:400;opacity:.7;">$97/mo, 3 sub-accounts</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="feature-label">CRM / Contact Pipeline</div><div class="feature-sub">Track, segment, follow up</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="partial">⚠ Limited control</span></td>
+            <td class="ghl-col"><span class="tick">✓ Full CRM, unlimited contacts</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Contact Import / Export</div><div class="feature-sub">You own your data</div></td>
+            <td><span class="cross">✗ No</span></td>
+            <td><span class="partial">⚠ CSV only</span></td>
+            <td><span class="cross">✗ Social Tenacity controls</span></td>
+            <td class="ghl-col"><span class="tick">✓ Full ownership, anytime</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Automated Follow-up</div><div class="feature-sub">Email + SMS sequences</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="partial">⚠ Available, not activated</span></td>
+            <td class="ghl-col"><span class="tick">✓ Full workflow automation</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">WhatsApp Messaging</div><div class="feature-sub">2x open rate vs email</div></td>
+            <td><span class="cross">✗ No</span></td>
+            <td><span class="cross">✗ No</span></td>
+            <td><span class="partial">⚠ Requires A2P setup</span></td>
+            <td class="ghl-col"><span class="tick">✓ Built-in, 2-way messaging</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Conversational AI / Chatbot</div><div class="feature-sub">CloseBot-style 24/7 follow-up</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ Not enabled</span></td>
+            <td class="ghl-col"><span class="tick">✓ GHL Conversation AI + CloseBot integration</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Voice AI</div><div class="feature-sub">AI answers calls, qualifies leads</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ Not enabled</span></td>
+            <td class="ghl-col"><span class="tick">✓ GHL Voice AI available</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Reputation Management</div><div class="feature-sub">Auto-request and display reviews</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ Not enabled</span></td>
+            <td class="ghl-col"><span class="tick">✓ Auto-request Google reviews, display widget on all 3 sites</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Database Reactivation</div><div class="feature-sub">Re-engage cold contacts</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="partial">⚠ Possible, not set up</span></td>
+            <td class="ghl-col"><span class="tick">✓ CloseBot or GHL AI chatbot for mass reactivation campaigns</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Landing Page / Funnel Builder</div><div class="feature-sub">Professional URLs, AI-built</div></td>
+            <td><span class="partial">⚠ Wix builder only</span></td>
+            <td><span class="partial">⚠ Product pages only</span></td>
+            <td><span class="partial">⚠ Auto-generated URLs</span></td>
+            <td class="ghl-col"><span class="tick">✓ AI funnel builder, clean custom URLs</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Course / Program Delivery</div><div class="feature-sub">Metabolic Reset, webinars</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="partial">⚠ Separate Practice Better account</span></td>
+            <td class="ghl-col"><span class="tick">✓ GHL Memberships and courses, same login</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Payments + Order Forms</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="tick">✓ Shopify checkout</span></td>
+            <td><span class="partial">⚠ Limited</span></td>
+            <td class="ghl-col"><span class="tick">✓ Stripe + order forms built-in</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Analytics + Conversion Tracking</div></td>
+            <td><span class="cross">✗ None</span></td>
+            <td><span class="partial">⚠ Google Analytics only</span></td>
+            <td><span class="cross">✗ No pixel</span></td>
+            <td class="ghl-col"><span class="tick">✓ Full reporting dashboard</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Team / Staff Access</div></td>
+            <td><span class="cross">✗ No</span></td>
+            <td><span class="partial">⚠ Limited</span></td>
+            <td><span class="cross">✗ Feature disabled</span></td>
+            <td class="ghl-col"><span class="tick">✓ Full team access, roles, permissions</span></td>
+          </tr>
+          <tr>
+            <td><div class="feature-label">Branding Control</div><div class="feature-sub">No third-party watermarks</div></td>
+            <td><span class="cross">✗ "Powered by ChiroWebsitePro"</span></td>
+            <td><span class="partial">⚠ Shopify checkout branding</span></td>
+            <td><span class="partial">⚠ Social Tenacity domain</span></td>
+            <td class="ghl-col"><span class="tick">✓ Your domain, your brand, full white-label</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
-    <div class="t-row">
-      <div class="t-dot orange">W2</div>
-      <div class="t-content">
-        <div class="t-label">Weeks 2 to 3 — Warm the List Before September 17</div>
-        <h3>Pre-Webinar Email Warmup (4 Emails)</h3>
-        <ul>
-          <li>Email 1: Value content — "The real reason most patients never feel better" (no pitch)</li>
-          <li>Email 2: Patient transformation story (Jane D., Tish, Sarah M. — real, confirmed)</li>
-          <li>Email 3: "Something special is coming" — soft teaser with symptom hook</li>
-          <li>Email 4: Webinar announcement with full details and registration link</li>
-          <li>Rewrite subject lines using pain-point hooks, not event language</li>
-        </ul>
-        <div class="t-owner">Your role: Read and approve 4 emails. Takes about 15 minutes.</div>
-      </div>
-    </div>
-
-    <div class="t-row">
-      <div class="t-dot teal">M1</div>
-      <div class="t-content">
-        <div class="t-label">Month 1 — Fix the Webinar Funnel</div>
-        <h3>Rebuild Registration Page + Add SMS Reminders</h3>
-        <ul>
-          <li>Add Dr. Tim's face and personal video to the registration page (proven 80% conversion lift)</li>
-          <li>Add countdown timer, social proof (5.0 stars, patient quotes), and single clear CTA</li>
-          <li>Add SMS reminder 48 hours and 1 hour before webinar</li>
-          <li>Connect webinar registration to GHL pipeline as "Lead" opportunity</li>
-        </ul>
-        <div class="t-owner">Your role: Record a 2-minute phone video. Your team handles the rest.</div>
-      </div>
-    </div>
-
-    <div class="t-row">
-      <div class="t-dot teal">M2</div>
-      <div class="t-content">
-        <div class="t-label">Month 2 — VSL + WhatsApp</div>
-        <h3>Evergreen Traffic Engine</h3>
-        <ul>
-          <li>Signature Blueprint VSL: recorded by Dr. Tim (one session), edited and placed by your marketing team</li>
-          <li>VSL replaces the cold email as the primary conversion tool — people watch, understand, register</li>
-          <li>WhatsApp channel activated via GHL — webinar reminders, replay links, booking nudges</li>
-          <li>Extract 30+ pieces of social content from the September 17 webinar recording</li>
-        </ul>
-        <div class="t-owner">Your role: 1 recording session. Your team handles editing, placement, and promotion.</div>
-      </div>
-    </div>
-
-    <div class="t-row">
-      <div class="t-dot navy">M3</div>
-      <div class="t-content">
-        <div class="t-label">Month 3 — Activate Social + Expand Reach</div>
-        <h3>Fix Social Media: Post to All Platforms, Not Just Facebook</h3>
-        <ul>
-          <li>Reconnect Instagram — your content is already being created daily, it just is not reaching IG</li>
-          <li>Add LinkedIn for doctor-to-doctor referrals and professional authority</li>
-          <li>Add YouTube Shorts from webinar clips — 30-second educational clips that drive traffic back to your programs</li>
-          <li>One post created, published to 4 platforms simultaneously via GHL — no extra work</li>
-          <li>WhatsApp broadcast activated: webinar reminders, replay links, and consultation nudges sent directly to your list</li>
-        </ul>
-        <div class="t-owner">Your role: Nothing changes for you. Same content, wider reach.</div>
-      </div>
-    </div>
-
-    <div class="t-row">
-      <div class="t-dot green">M3+</div>
-      <div class="t-content">
-        <div class="t-label">Month 3 Onward — One Login for Everything</div>
-        <h3>The Simplest Upgrade You Can Make: Your Own GHL Account</h3>
-        <ul>
-          <li>Right now you have two separate GHL subaccounts (SocialTenacity and HEA) — two logins, two bills, two sets of contacts that do not talk to each other</li>
-          <li>Your own GHL account at $297/month gives you unlimited subaccounts — meaning all three of your sites (NaturalHealth, Laser, Supplements) connect to one CRM, one contact database, one pipeline</li>
-          <li>Every lead from every site lands in one place — no more guessing which system a patient is in</li>
-          <li>WhatsApp, SMS, email, social posting, booking, reputation management — all from one dashboard</li>
-          <li>You stop paying for Wix twice. GHL AI Studio builds your sites directly inside the platform.</li>
-          <li>One login. One bill. Three websites. 7,337 contacts unified. All automations connected.</li>
-        </ul>
-        <div class="t-owner">Your role: Say yes when you are ready. Your team sets it all up.</div>
-      </div>
-    </div>
-
   </div>
 </div>
 
+<!-- COST SAVINGS -->
+<div class="section" style="background:var(--bg);">
+  <div class="section-inner">
+    <p class="section-label">Monthly Cost Analysis</p>
+    <h2 class="section-title">What You're Paying Now vs. One GHL Account</h2>
+    <p class="section-desc">Five platforms, five subscriptions, zero connection between them. This is what it costs every month to run a fragmented digital stack.</p>
 
-<!-- SECTION 5: EXPECTED OUTCOMES -->
-<div class="section-label">
-  <h2>Step 5: Expected Outcomes</h2>
-  <p>Conservative projections based on industry benchmarks for healthcare practices</p>
-</div>
-
-<div class="outcomes">
-  <div class="outcomes-grid">
-
-    <div class="outcome-card">
-      <div class="o-before">10</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">100+</div>
-      <p>Webinar sign-ups per campaign (after warmup + funnel fix)</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="o-before">11%</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">22%+</div>
-      <p>Email open rate (after subject line rewrite + list warmup)</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="o-before">$0</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">Tracked</div>
-      <p>Revenue visible in GHL (after Stripe connects to funnels)</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="o-before">40</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">100+</div>
-      <p>Google reviews (after automated post-appointment requests)</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="o-before">4 logins</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">1 login</div>
-      <p>Wix x2, Shopify, GHL x2 all consolidated into one GHL account you own</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="o-before">FB only</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">4 platforms</div>
-      <p>Same daily content published to Facebook, Instagram, LinkedIn, YouTube automatically</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="o-before">0</div>
-      <div class="o-arrow">↓ → ↑</div>
-      <div class="o-after">Pipeline</div>
-      <p>Opportunities tracked (every lead visible from first touch to enrollment)</p>
-    </div>
-
-  </div>
-</div>
-
-
-<!-- SECTION 6: WHAT WE NEED FROM YOU -->
-<div class="ask" style="margin-top:32px;">
-  <div class="ask-box">
-    <h3>What We Need From You, Dr. Tim</h3>
-    <div class="ask-sub">Your team handles everything else. We only need 4 things from you — total time: about 2 hours across 60 days.</div>
-    <div class="ask-items">
-      <div class="ask-item">
-        <div class="ask-num">Request 1</div>
-        <h4>30-Min Call This Week</h4>
-        <p>Confirm Sept 17 webinar details and approve the email warmup sequence before it goes live.</p>
+    <div class="cost-grid">
+      <div class="cost-card">
+        <div class="cost-label">Current Platform</div>
+        <div class="cost-platform">Wix (naturalhealthtucson)</div>
+        <div class="cost-price">~$27<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <div class="cost-note">No CRM. No follow-up. No automation. ChiroWebsitePro watermark.</div>
       </div>
-      <div class="ask-item">
-        <div class="ask-num">Request 2</div>
-        <h4>Approve New Emails</h4>
-        <p>4 emails for the warmup sequence. We write them. You read and approve. Takes 15 minutes.</p>
+      <div class="cost-card">
+        <div class="cost-label">Current Platform</div>
+        <div class="cost-platform">Wix (tucsonlasertherapy)</div>
+        <div class="cost-price">~$27<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <div class="cost-note">Duplicate subscription. Same limitations. Completely siloed.</div>
       </div>
-      <div class="ask-item">
-        <div class="ask-num">Request 3</div>
-        <h4>Record a 2-Minute Video</h4>
-        <p>For the webinar registration page. Phone camera is fine. "Hi, I'm Dr. Tim — here's what you'll learn..." That's it.</p>
+      <div class="cost-card">
+        <div class="cost-label">Current Platform</div>
+        <div class="cost-platform">Shopify</div>
+        <div class="cost-price">~$39<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <div class="cost-note">Customers buy, then disappear. No follow-up pipeline connected.</div>
       </div>
-      <div class="ask-item">
-        <div class="ask-num">Request 4</div>
-        <h4>Approve WhatsApp Activation</h4>
-        <p>98% open rate vs 11% email. Your contacts are already in GHL. Webinar reminders can go out this week. Just say go.</p>
+      <div class="cost-card">
+        <div class="cost-label">Current Platform</div>
+        <div class="cost-platform">Social Tenacity GHL</div>
+        <div class="cost-price">~$297<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <div class="cost-note">Agency plan. You don't own the account. Limited feature access. No staff.</div>
       </div>
-      <div class="ask-item">
-        <div class="ask-num">Request 5</div>
-        <h4>Consider One GHL Account</h4>
-        <p>Your own GHL at $297/month replaces Wix x2 and both current subaccounts. One login. One bill. All three sites connected to one CRM.</p>
+      <div class="cost-card">
+        <div class="cost-label">Current Platform</div>
+        <div class="cost-platform">Practice Better</div>
+        <div class="cost-price">~$25<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <div class="cost-note">Course delivery with no CRM connection. "Green Patch Inc" in footer.</div>
+      </div>
+      <div class="cost-card ghl">
+        <div class="cost-label">Recommended: Your Own GHL</div>
+        <div class="cost-platform">GoHighLevel Pro</div>
+        <div class="cost-price" style="color:var(--green);">$97<span style="font-size:1rem;font-weight:400;">/mo</span></div>
+        <div class="cost-note">3 sub-accounts. Full CRM. All AI features. You own everything. No watermarks.</div>
+      </div>
+    </div>
+
+    <div class="savings-total">
+      <div>
+        <strong>Current monthly spend across 5 platforms</strong><br>
+        <span style="font-size:0.85rem;color:rgba(255,255,255,0.6);">Wix x2 + Shopify + Social Tenacity + Practice Better</span>
+      </div>
+      <div class="amount">~$415/mo</div>
+      <div style="text-align:right;">
+        <strong>One GHL account replaces all of it</strong><br>
+        <span style="font-size:0.85rem;color:rgba(255,255,255,0.6);">Save ~$318/month = <span style="color:var(--gold);font-weight:700;">$3,816/year</span></span>
       </div>
     </div>
   </div>
 </div>
 
+<!-- WHAT GHL UNLOCKS -->
+<div class="section" style="background:var(--white);">
+  <div class="section-inner">
+    <p class="section-label">What One GHL Account Activates</p>
+    <h2 class="section-title">Features You're Leaving on the Table Right Now</h2>
+    <p class="section-desc">These are not future upgrades. These are tools available inside GHL today that are either not enabled or not connected to your patient journey.</p>
+
+    <div class="unlock-grid">
+      <div class="unlock-card">
+        <div class="unlock-icon">🤖</div>
+        <h4>Conversational AI + CloseBot</h4>
+        <p>AI that texts your leads in a human-like tone, answers questions, and books consultations automatically — 24/7. Recommended: CloseBot integration for healthcare. Higher conversion than any static form.</p>
+      </div>
+      <div class="unlock-card">
+        <div class="unlock-icon">📲</div>
+        <h4>WhatsApp Messaging</h4>
+        <p>WhatsApp has a 98% open rate vs 20% for email. Send appointment reminders, webinar invites, and follow-up sequences directly to patients on WhatsApp. Built into GHL with 2-way conversation.</p>
+      </div>
+      <div class="unlock-card">
+        <div class="unlock-icon">🗣️</div>
+        <h4>Voice AI</h4>
+        <p>AI that answers your phone line after hours, qualifies callers, and adds them to your CRM automatically. Never miss a lead because no one picked up.</p>
+      </div>
+      <div class="unlock-card">
+        <div class="unlock-icon">⭐</div>
+        <h4>Reputation Management</h4>
+        <p>Automatically request Google reviews from patients after their visit. Display your review count and star rating on all three websites. More reviews means higher local SEO ranking.</p>
+      </div>
+      <div class="unlock-card">
+        <div class="unlock-icon">🔄</div>
+        <h4>Database Reactivation</h4>
+        <p>Your 7,337 contacts are sitting idle. CloseBot or GHL's AI chatbot can run a reactivation campaign — a natural, conversational message that re-engages cold contacts and brings them back into your funnel.</p>
+      </div>
+      <div class="unlock-card">
+        <div class="unlock-icon">🧠</div>
+        <h4>GHL AI Features</h4>
+        <p>Funnel AI builds your landing pages in minutes. Workflow AI builds your automations from a plain description. Content AI writes your email sequences. All included at no extra cost inside GHL.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<div class="rec-band">
+  <div class="rec-band-inner">
+    <p class="section-label" style="color:var(--gold);">What to Do Next</p>
+    <h2>The Prescription: <span>One Platform, Full Control.</span></h2>
+    <p class="lead">Your offer is strong. Your expertise is real. The problem is your delivery system is fragmented across five platforms with no connection between them. Here is the exact sequence to fix it.</p>
+
+    <div class="rec-steps">
+      <div class="rec-step">
+        <div class="step-num">Step 01 — This Week</div>
+        <h4>Get Your Own GHL Account</h4>
+        <p>$97/month. 3 sub-accounts. One for your main practice, one for laser therapy, one for the supplement brand. All connected to one CRM. You own the data.</p>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Step 02 — Week 1-2</div>
+        <h4>Migrate Your Websites</h4>
+        <p>Move naturalhealthtucson.com and tucsonlasertherapy.com into GHL sites. Demo redesigns are already built and ready. Eliminate both Wix subscriptions and both ChiroWebsitePro watermarks.</p>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Step 03 — Week 2</div>
+        <h4>Enable Conversation AI + CloseBot</h4>
+        <p>Connect a chat widget and CloseBot to all three sites and your opt-in page. Every visitor who has a question gets an immediate, human-like response that books them into your calendar.</p>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Step 04 — Week 2-3</div>
+        <h4>Activate WhatsApp + A2P</h4>
+        <p>Register your number for A2P 10DLC (in progress). Once approved, send webinar reminders, appointment confirmations, and follow-up sequences via WhatsApp with 98% open rates.</p>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Step 05 — Before Sept 17</div>
+        <h4>Database Reactivation Campaign</h4>
+        <p>Run a CloseBot reactivation to your 7,337 contacts before the webinar. A warm list that knows your name converts 10x better than a cold one. No ads required.</p>
+      </div>
+      <div class="rec-step">
+        <div class="step-num">Step 06 — Ongoing</div>
+        <h4>Reputation Management on All Sites</h4>
+        <p>Auto-request Google reviews after every patient visit. Display the widget on all three sites. More reviews means higher Google Maps ranking and more organic bookings.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
-<div class="page-footer" style="margin-top:32px;">
-  <p>Prepared by <strong>Richard Lobres</strong> | rlobresvp@gmail.com</p>
-  <p>Confidential — For Dr. Tim Harrigan | Synergy Wellness | August 2026</p>
+<div class="report-footer">
+  <div>
+    <p>Prepared by <strong style="color:rgba(255,255,255,0.8);">Richard Lobres</strong> &bull; BizEx | GHL Certified Specialist</p>
+    <p style="margin-top:4px;"><a href="mailto:richard@thebusinessexpander.com">richard@thebusinessexpander.com</a></p>
+  </div>
+  <p>Copyright &copy; 2026 BizEx. Confidential — prepared exclusively for Dr. Tim Harrigan / Synergy Wellness.</p>
 </div>
 
 </body>
